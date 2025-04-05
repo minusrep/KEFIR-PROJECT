@@ -146,7 +146,7 @@ namespace Root.Rak.Agents.Enemy
 
         private ABTNode BuildDead()
         {
-            var isNotDead = new ConditionNode(() => !_model.IsDead);
+            var isNotDead = new ConditionNode(() => !_model.IsDead && !_model.IsLife);
 
             var deadAnimActive = new ActionNode(() =>
             {
