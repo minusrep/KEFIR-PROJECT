@@ -5,6 +5,8 @@ namespace Root.Rak.Agents.Enemy
 {
     public class EnemyAttaker
     {
+        public bool IsFreeze { get; set; }
+
         private readonly ChildTriggerHandler _triggerHandler;
 
         private readonly TeamID _teamID;
@@ -14,11 +16,15 @@ namespace Root.Rak.Agents.Enemy
             _triggerHandler = triggerHandler;
             _teamID = teamID;
 
-            _triggerHandler.TriggerEnterEvent += Attack;
+            IsFreeze = true;
+
+            _triggerHandler.TriggerEnterEvent += AttackHandler;
         }
 
-        public void Attack(Collider other)
+        private void AttackHandler(Collider other)
         {
+            if (IsFreeze) return;
+
             IEntityAttacked entity = other.GetComponent<IEntityAttacked>();
 
             if (entity == null) return;
@@ -28,6 +34,8 @@ namespace Root.Rak.Agents.Enemy
 
             //TODO: Switch TestAttack
             entity.TakeDamage(new TestAttack(10));
+
+            IsFreeze = true;
 
         }
     }

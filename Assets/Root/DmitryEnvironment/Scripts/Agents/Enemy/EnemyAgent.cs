@@ -41,7 +41,7 @@ namespace Root.Rak.Agents.Enemy
 
             _model = new EnemyModel(TargetProvider, _motion, transform);
 
-            _brain = new EnemyBrain(_model, _animator, _motion);
+            _brain = new EnemyBrain(_model, _animator, _motion, _attacker);
         }
 
         public void TakeDamage(IAttack attack)

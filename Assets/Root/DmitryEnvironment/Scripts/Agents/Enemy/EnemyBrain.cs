@@ -1,5 +1,6 @@
 ﻿using Root.Rak.BT;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 namespace Root.Rak.Agents.Enemy
@@ -9,14 +10,17 @@ namespace Root.Rak.Agents.Enemy
         private readonly EnemyModel _model;
         private readonly EnemyAnimator _animator;
         private readonly EnemyMotion _motion;
+        private readonly EnemyAttaker _attacker;
 
         private SelectorNode _root;
 
-        public EnemyBrain(EnemyModel model, EnemyAnimator animator, EnemyMotion motion)
+        public EnemyBrain(EnemyModel model, EnemyAnimator animator, EnemyMotion motion, EnemyAttaker attaker)
         {
             _model = model;
             _animator = animator;
             _motion = motion;
+
+            _attacker = attaker;
 
             Build();
         }
@@ -109,6 +113,13 @@ namespace Root.Rak.Agents.Enemy
         {
             var isNotAttackProcess = new ConditionNode(() => !_animator.HasAttackProcessing );
 
+            var attackUnLock = new ActionNode(() =>
+            {
+                _attacker.IsFreeze = false;
+
+                return NodeStatus.SUCCESS;
+            });
+
             var attackAnimActivate = new ActionNode(() =>
             {
                 _animator.Attack();
@@ -126,6 +137,7 @@ namespace Root.Rak.Agents.Enemy
             return new SequenceNode(new List<ABTNode>
             {
                 isNotAttackProcess,
+                attackUnLock,
                 attackAnimActivate,
                 motionLock,
                 DebugNode("Attack"),
