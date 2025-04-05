@@ -1,60 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Root.MaximEnvironment
 {
-    public class CharacterInventory : MonoBehaviour, IInventory
+    public class CharacterInventory : MonoBehaviour
     {
-        public event Action OnInvenoryChange;
+        public Item HandsItem;
         
-        public List<Item> Items => _items;
+        public List<Item> Items;
         
-        private bool IsFull => _items.Count >= _capacity;
+        public CharacterHands CharacterHands;
         
-        [SerializeField] private int _capacity;
-
-        [SerializeField] private List<Item> _items;
-
-        private void Awake()
+        private void Start()
         {
-            _items = new List<Item>();
+            Items = new List<Item>();
         }
 
-        public bool TryAddItem(Item item)
+        public void CollectItem(Item item)
         {
-            if (IsFull) return false; 
+            if (Items.Count == 3) return;
+
+            Items.Add(item);
             
-            _items.Add(item);
-            
-            OnInvenoryChange?.Invoke();
-            
-            return true;
+            item.Hide();
         }
 
-        public bool TryRemoveItem(int itemID)
+        public Item TakeItem()
         {
-            var founded = _items.FirstOrDefault(a => a.ItemID == itemID);
+            if (Items.Count == 0) return null;
+            
+            var item = Items[Items.Count - 1];
 
-            if (founded == null) return false;
+            Items.Remove(item);
             
-            _items.Remove(founded);
-            
-            OnInvenoryChange?.Invoke();
-            
-            return true;
+            return item;
         }
 
-        public bool TryRemoveItem(Item item)
+        public void SetHands(Item cooked)
         {
-            if (!_items.Contains(item)) return false;
+            HandsItem = cooked;
             
-            _items.Remove(item);
-            
-            OnInvenoryChange?.Invoke();
+            HandsItem.transform.parent = CharacterHands.ItemParent;
 
-            return true;
+            HandsItem.transform.localPosition = Vector3.zero;
+            
+            var position = HandsItem.transform.position;
+            
+            CharacterHands.UpdateState(CharacterHandsState.Item);
+            
+            HandsItem.Show(position);
+            
+            Debug.Log("Set hands");
         }
     }
 }

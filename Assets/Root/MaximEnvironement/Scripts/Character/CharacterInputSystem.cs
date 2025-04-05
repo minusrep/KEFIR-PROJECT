@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Root.MaximEnvironment
 {
     public class CharacterInputSystem : MonoBehaviour
     {
+        private float _currentInputTime;
+        
         [SerializeField] private CharacterInteraction _characterInteraction;
         
         [SerializeField] private CharacterProvider _characterProvider;

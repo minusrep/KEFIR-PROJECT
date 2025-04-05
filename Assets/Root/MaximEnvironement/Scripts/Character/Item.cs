@@ -1,34 +1,19 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Root.MaximEnvironment
 {
-    public class Item : MonoBehaviour, IInteractableObject
+    public class Item : InteractiveObject
     {
-        public int ItemID;
-        public string Description => _description;
+        public ItemType ItemType;
         
-        [SerializeField] private string _description;
-        
-        [SerializeField] private Outline _outline;
-
-        public void Interact() 
-            => Collect();
-
-        public void Select() 
-            => _outline.enabled = true;
-
-        public void Unselect() 
-            => _outline.enabled = false;
-
-        public void Put(Vector3 position)
+        public void Show(Vector3 position)
         {
-            gameObject.transform.position = position;
-            
             gameObject.SetActive(true);
+            
+            gameObject.transform.position = position;
         }
 
-        private void Collect() 
+        public void Hide() 
             => gameObject.SetActive(false);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Root.MaximEnvironment
 {
@@ -10,33 +11,37 @@ namespace Root.MaximEnvironment
         [SerializeField] private CharacterInteraction _characterInteraction;
         
         [SerializeField] private CharacterInventory _characterInventory;
-        
+
+        [SerializeField] private CharacterHealth _characterHealth;
+
         [SerializeField] private TextMeshProUGUI _currentInteractionText;
-        
+
         [SerializeField] private UIKeyCode A;
-        
+
         [SerializeField] private UIKeyCode D;
-        
-        [SerializeField] private  UIKeyCode W;
-        
+
+        [SerializeField] private UIKeyCode W;
+
         [SerializeField] private UIKeyCode S;
 
         [SerializeField] private List<TextMeshProUGUI> _inventory;
 
-        private void OnEnable() 
-            => _characterInventory.OnInvenoryChange += UpdateInventory;
+        [SerializeField] private Image _healthBar;
 
-        private void OnDisable() 
-            => _characterInventory.OnInvenoryChange -= UpdateInventory;
 
-        private void Update()
+         private void Update()
         {
+            UpdateHealthBar();
+            
             UpdateCurrentInteractableText();
 
-            UpdateInventory();
-            
+            UpdateInventoryView();
+
             //UpdateWASD();
         }
+
+        private void UpdateHealthBar() 
+            => _healthBar.fillAmount = _characterHealth.CurrentHealth / _characterHealth.MaxHealth;
 
         private void UpdateWASD()
         {
@@ -49,38 +54,22 @@ namespace Root.MaximEnvironment
             S.Active = Input.GetKey(KeyCode.S);
         }
 
-        private void UpdateCurrentInteractableText()
-        {
-            var interactable = _characterInteraction.CurrentInteractableObject;
-
-            if (interactable != null)
-            {
-                _currentInteractionText.gameObject.SetActive(true);
-
-                _currentInteractionText.text = interactable.Description;
-            }
-            else
-            {
-                _currentInteractionText.gameObject.SetActive(false);
-
-                _currentInteractionText.text = string.Empty;
-            }
-        }
-
-        public void UpdateInventory()
+        private void UpdateInventoryView()
         {
             _inventory.ForEach(a => a.text = string.Empty);
-            
+
             for (int i = 0; i < _characterInventory.Items.Count; i++)
             {
                 var item = _characterInventory.Items[i];
-                
-                var inventoryItem = _inventory[i];
+                var view = _inventory[i];
 
                 if (item == null) break;
-                
-                inventoryItem.text = item.Description;
+
+                view.text = item.Description;
             }
         }
+        
+        private void UpdateCurrentInteractableText() 
+            => _currentInteractionText.text = _characterInteraction.CurrentInteractiveObject ? _characterInteraction.CurrentInteractiveObject.Description : String.Empty;
     }
 }

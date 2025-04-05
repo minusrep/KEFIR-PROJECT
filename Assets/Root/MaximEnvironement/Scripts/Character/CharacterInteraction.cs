@@ -4,62 +4,50 @@ namespace Root.MaximEnvironment
 {
     public class CharacterInteraction : MonoBehaviour
     {
-        public IInteractableObject CurrentInteractableObject
-        {
-            get => _currentInteractableObject;
-
-            private set
-            {
-                if (_currentInteractableObject == value) return;
-                
-                _currentInteractableObject?.Unselect();
-                
-                _currentInteractableObject = value;
-                
-                _currentInteractableObject?.Select();
-            }
-        }
-
-        private IInteractableObject _currentInteractableObject;
+        public InteractiveObject CurrentInteractiveObject { get; private set; }
+        
+        [SerializeField] private CharacterInventory _characterInventory;
         
         [SerializeField] private float _interactDistance;
         
-        [SerializeField] private CharacterInventory _characterInventory;
-
-        private void Update() 
-            => CurrentInteractableObject = DetectInteractable();
-
         public void Interact()
         {
             var interactable = DetectInteractable();
             
             if (interactable == null) return;
 
-            switch (interactable)
+            switch (interactable.Type)
             {
-                case Item item:
-                    
-                    if (_characterInventory.TryAddItem(item))
-                        
-                        item.Interact();
-                    
+                case InteractionType.Default:
                     break;
                 
-                case IInteractableWithInventoryObject interactableWithInventoryObject:
+                case InteractionType.CookingTable:
                     
-                    interactableWithInventoryObject.Interact(_characterInventory);
-                    
+                    var cookingTable = interactable as CookingTable;
+
+                    var cooked = cookingTable.TryCookItem(_characterInventory.TakeItem());
+
+                    if (cooked != null) _characterInventory.SetHands(cooked);
+
                     break;
                 
-                default:
+                case InteractionType.TakeReadyItem:
                     
-                    interactable.Interact();
+                    var item = interactable as Item;
                     
+                    _characterInventory.CollectItem(item);
+
                     break;
             }
         }
 
-        private IInteractableObject DetectInteractable()
+        private void Update()
+            => UpdateCurrentInteractiveObject();
+
+        private void UpdateCurrentInteractiveObject() 
+            => CurrentInteractiveObject = DetectInteractable();
+
+        private InteractiveObject DetectInteractable()
         {
             var camera = Camera.main;
             
@@ -67,11 +55,11 @@ namespace Root.MaximEnvironment
             
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            var founded = Physics.Raycast(ray, out RaycastHit hit, _interactDistance);
+            var hits = new RaycastHit[1];
 
-            if (founded == null) return null;
-            
-            return founded ? hit.collider.GetComponent<IInteractableObject>() : null;
+            var count = Physics.RaycastNonAlloc(ray, hits,  _interactDistance);
+
+            return hits[0].collider?.GetComponent<InteractiveObject>();
         }
     }
 }
