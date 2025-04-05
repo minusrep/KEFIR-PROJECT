@@ -45,6 +45,8 @@ namespace InfimaGames.LowPolyShooterPack.Legacy
 		//If the bullet collides with anything
 		private void OnCollisionEnter(Collision collision)
 		{
+			Debug.Log(collision.gameObject.name);
+			
 			//Ignore collisions with other projectiles.
 			if (collision.gameObject.GetComponent<Projectile>() != null)
 				return;
