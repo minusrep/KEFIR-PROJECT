@@ -29,6 +29,11 @@ namespace Root.Rak.Agents.Enemy
             HasTarget = false;
         }
 
+        public void TakeDamage()
+        {
+
+        }
+
         public void UpdateTarget()
         {
             ITarget target = _targetProvider.RequestTarget(_me);

@@ -46,7 +46,9 @@ namespace Root.Rak.Agents.Enemy
 
         public void TakeDamage(IAttack attack)
         {
-            throw new System.NotImplementedException();
+            if (!_model.IsLife) return;
+
+            _model.TakeDamage();
         }
 
         public void Update()
@@ -56,14 +58,4 @@ namespace Root.Rak.Agents.Enemy
             _brain.Update();
         }
     }
-
-/*    public class EnemyAvatar
-    {
-
-    }
-
-    public class EnemyAttacker
-    {
-        
-    }*/
 }
