@@ -1,3 +1,4 @@
+using Root.Rak.Tests;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,6 +7,8 @@ namespace Root.Rak.Agents.Visitor
     [RequireComponent(typeof(NavMeshAgent))]
     public class VisitorAgent : MonoBehaviour
     {
+        public TestVisitorTargetsProvider _provider;
+
         private VisitorModel _model;
 
         private VisitorAnimator _animator;
@@ -16,13 +19,20 @@ namespace Root.Rak.Agents.Visitor
 
         private void Start()
         {
-            _model = new VisitorModel();
+            _motion = new VisitorMotion(GetComponent<NavMeshAgent>());
 
             _animator = new VisitorAnimator(GetComponentInChildren<Animator>());
 
-            _motion = new VisitorMotion(GetComponent<NavMeshAgent>());
+            _model = new VisitorModel(_provider, _motion);
 
             _brain = new VisitorBrain(_animator, _model, _motion);
+        }
+
+        private void Update()
+        {
+            _motion.Update();
+
+            _brain.Update();
         }
     }
 }
