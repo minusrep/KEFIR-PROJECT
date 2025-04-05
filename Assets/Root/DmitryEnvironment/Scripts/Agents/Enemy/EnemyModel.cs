@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Root.Rak.Agents.Enemy
 {
@@ -33,10 +31,23 @@ namespace Root.Rak.Agents.Enemy
 
         public void UpdateTarget()
         {
-            _motion.SetTarget(_targetProvider.RequestTarget(_me));
+            ITarget target = _targetProvider.RequestTarget(_me);
+
+            target.Dead += ClearTarget;
+
+            _motion.SetTarget(target);
             
             HasTarget = true;
 
+        }
+
+        private void ClearTarget()
+        {
+            UnityEngine.Debug.Log("clear target");
+
+            HasTarget = false;
+
+            _motion.ClearTarget();
         }
     }
 }

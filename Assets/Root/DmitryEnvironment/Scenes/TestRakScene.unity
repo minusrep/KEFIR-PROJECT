@@ -448,6 +448,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1222680316}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1422497531 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: b4b929ae0e08b184a8867e490015e40c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1222680316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1489251815
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +468,7 @@ GameObject:
   - component: {fileID: 1489251817}
   - component: {fileID: 1489251816}
   - component: {fileID: 1489251821}
+  - component: {fileID: 1489251822}
   m_Layer: 0
   m_Name: Door
   m_TagString: Player
@@ -571,8 +578,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDead: 0
-  _health: 100
+  _health: 20
   _id: 0
+--- !u!54 &1489251822
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489251815}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1747927566
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +679,63 @@ Transform:
   m_Father: {fileID: 610550019}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1771620856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771620857}
+  - component: {fileID: 1771620858}
+  - component: {fileID: 1771620859}
+  m_Layer: 0
+  m_Name: Attacker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771620857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771620856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.148, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1422497531}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1771620858
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771620856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 0.2, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1771620859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771620856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f5c5965dd19674181bb63c9be91be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1877137924
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +785,7 @@ MonoBehaviour:
   TargetProvider: {fileID: 1976929563}
   Anim: {fileID: 1222680320}
   AnimHandler: {fileID: 1222680319}
+  AttackTriggerHandler: {fileID: 1771620859}
 --- !u!195 &1877137927
 NavMeshAgent:
   m_ObjectHideFlags: 0

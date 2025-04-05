@@ -11,8 +11,10 @@ namespace Root.Rak.Tests
 
         public TeamID ID => _id;
         public Vector3 Position => transform.position;
+        public bool IsLife => _isLife;
 
-        [SerializeField] private bool _isDead;
+
+        [SerializeField] private bool _isLife;
 
         [SerializeField] private float _health;
 
@@ -20,18 +22,20 @@ namespace Root.Rak.Tests
 
         private void Start()
         {
-            _isDead = true;
+            _isLife = true;
         }
 
         public void TakeDamage(IAttack attack)
         {
+            Debug.Log("Damage DOOR");
+
             _health -= attack.Damage;
 
-            if (_health < 0)
+            if (_health <= 0)
             {
                 _health = 0;
 
-                _isDead = false;
+                _isLife = false;
 
                 Dead?.Invoke();
             }

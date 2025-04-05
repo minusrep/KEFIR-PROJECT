@@ -43,6 +43,8 @@ namespace Root.Rak.Tests
 
             foreach (var door in Doors)
             {
+                if (!door.IsLife) continue;
+
                 if (distanceBetweenPlayer > Vector3.Distance(enemy.position, door.Position))
                 {
                     newTarget = door;
