@@ -115,6 +115,19 @@ namespace Root.MaximEnvironment
                         }
 
                         break;
+                    
+                    case GuestTable guestTable:
+
+                        var readyHands = CharacterInventory.HandsItem != null;
+                        
+                        if (readyHands)
+                        {
+                            guestTable.SetItem(CharacterInventory.HandsItem);
+
+                            CharacterInventory.RemoveHandsItem();
+                        }
+                        
+                        break;
                 }
             }
         }
