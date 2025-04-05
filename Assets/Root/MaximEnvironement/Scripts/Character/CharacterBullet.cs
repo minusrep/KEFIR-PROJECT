@@ -17,20 +17,14 @@ namespace Root.MaximEnvironment
             Collider.isTrigger = true;
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.gameObject.name);
-            
-            if (other.gameObject.TryGetComponent<IEntityAttacked>(out var attacked))
-            {
-                Debug.Log(attacked);
+            var entityAttacked = other.gameObject.GetComponent<IEntityAttacked>();
 
-                if (attacked.ID == TeamID.AGENT)
-                {
-                    Debug.LogWarning(attacked);
-                    attacked.TakeDamage(new TestAttack(10f));
-                }
-                
+            if (entityAttacked != null)
+            {
+                if(entityAttacked.ID == TeamID.AGENT)
+                    entityAttacked.TakeDamage(new TestAttack(10f));
             }
         }
     }

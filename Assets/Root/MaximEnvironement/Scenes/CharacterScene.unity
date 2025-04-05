@@ -708,9 +708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc375c51184851b22345ee79211b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemID: 149
-  _description: Item
-  _outline: {fileID: 1258543615}
 --- !u!65 &1258543611
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1046,43 +1043,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 325643114}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1484487209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484487208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ae7a829e0f84cdab01d6312d8d37dc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactDistance: 2
-  _characterInventory: {fileID: 1484487223}
---- !u!114 &1484487210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484487208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ceea7470f594593a00f0bcf649e09d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characterInteraction: {fileID: 1484487209}
-  _characterInventory: {fileID: 1484487223}
-  _currentInteractionText: {fileID: 1326484104}
-  A: {fileID: 0}
-  D: {fileID: 0}
-  W: {fileID: 0}
-  S: {fileID: 0}
-  _inventory:
-  - {fileID: 431549984}
-  - {fileID: 1142705704}
-  - {fileID: 1486299394}
 --- !u!4 &1484487218 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2748913124992463393, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
@@ -1114,22 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02c9417e565480496cc71c0251b43f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterInteraction: {fileID: 1484487209}
-  _characterProvider: {fileID: 1484487219}
---- !u!114 &1484487223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484487208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48b75379e6a6461ebc6ee5939d89c2f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _capacity: 3
-  _items: []
+  CharacterProvider: {fileID: 0}
 --- !u!1 &1486299392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1314,6 @@ GameObject:
   - component: {fileID: 1769281681}
   - component: {fileID: 1769281680}
   - component: {fileID: 1769281679}
-  - component: {fileID: 1769281678}
   - component: {fileID: 1769281683}
   m_Layer: 0
   m_Name: Cube
@@ -1378,20 +1322,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1769281678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769281677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dc2690137904a3683dd74d2da23086e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _description: SomeText
-  _outline: {fileID: 1769281683}
 --- !u!65 &1769281679
 BoxCollider:
   m_ObjectHideFlags: 0
