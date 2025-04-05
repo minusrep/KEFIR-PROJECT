@@ -33,7 +33,7 @@ namespace Root.Rak.Agents.Enemy
             _root = new SelectorNode(new List<ABTNode>
             {
                 BuildLife(),
-                //BuildDead()
+                BuildDead()
             });
         }
 
@@ -146,7 +146,29 @@ namespace Root.Rak.Agents.Enemy
 
         private ABTNode BuildDead()
         {
-            return default(ABTNode);
+            var isNotDead = new ConditionNode(() => !_model.IsDead && !_model.IsLife);
+
+            var deadAnimActive = new ActionNode(() =>
+            {
+                _animator.Dead();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var deadAction = new ActionNode(() =>
+            {
+                _model.Dead();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                isNotDead,
+                deadAnimActive, 
+                deadAction,
+                DebugNode("Dead =(")
+            });
         }
 
         public ActionNode DebugNode(string message)

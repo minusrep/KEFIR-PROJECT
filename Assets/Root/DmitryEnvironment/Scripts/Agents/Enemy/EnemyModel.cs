@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Root.Rak.Agents.Enemy
 {
@@ -31,7 +32,12 @@ namespace Root.Rak.Agents.Enemy
 
         public void TakeDamage()
         {
+            IsLife = false;
+        }
 
+        public void Dead()
+        {
+            IsDead = true;
         }
 
         public void UpdateTarget()
@@ -48,8 +54,6 @@ namespace Root.Rak.Agents.Enemy
 
         private void ClearTarget()
         {
-            UnityEngine.Debug.Log("clear target");
-
             HasTarget = false;
 
             _motion.ClearTarget();
