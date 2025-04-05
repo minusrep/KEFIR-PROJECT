@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Root.Rak.BT;
+using UnityEditor;
 using UnityEngine;
 
 namespace Root.Rak.Agents.Visitor
@@ -10,14 +11,17 @@ namespace Root.Rak.Agents.Visitor
         private readonly VisitorAnimator _animator;
         private readonly VisitorModel _model;
         private readonly VisitorMotion _motion;
+        private readonly VisitorStomach _stomach;
 
         private SelectorNode _root;
 
-        public VisitorBrain(VisitorAnimator animator, VisitorModel model, VisitorMotion motion)
+        public VisitorBrain(VisitorAnimator animator, VisitorModel model, VisitorMotion motion, VisitorStomach stomach)
         {
             _animator = animator;
             _model = model;
             _motion = motion;
+
+            _stomach = stomach;
 
             Build();
         }
@@ -52,7 +56,7 @@ namespace Root.Rak.Agents.Visitor
             return new SelectorNode(new List<ABTNode>
             {
                 BuildInScenario(),
-                //BuildOutScenario()
+                BuildOutScenario()
             });
         }
 
@@ -79,7 +83,7 @@ namespace Root.Rak.Agents.Visitor
 
         private ABTNode BuildSelectTarget()
         {
-            var hasNotTarget = new ConditionNode(() => !_model.HasTarget);
+            var hasNotTarget = new ConditionNode(() => !_motion.HasTarget);
 
             var selectTarget = new ActionNode(() =>
             {
@@ -136,6 +140,20 @@ namespace Root.Rak.Agents.Visitor
                 return NodeStatus.SUCCESS;
             });
 
+            var switchStatus = new ActionNode(() =>
+            {
+                _model.Status = VisitorStatus.OUT;
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var clearTarget = new ActionNode(() =>
+            {
+                _motion.ClearTarget();
+
+                return NodeStatus.SUCCESS;
+            });
+
             var makeOrder = new ActionNode(() =>
             {
                 //TODO: Make Order
@@ -147,13 +165,119 @@ namespace Root.Rak.Agents.Visitor
             {
 
                 sidDownAnim,
-                makeOrder
+                switchStatus,
+                clearTarget,
+                makeOrder,
+                DebugNode("SidDown")
             });
         }
 
         private ABTNode BuildOutScenario()
         {
+            var checkStatus = new ConditionNode(() => _model.Status == VisitorStatus.OUT);
+
+            var isNotSidding = new ConditionNode(() => !_animator.IsSidding);
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                checkStatus,
+                isNotSidding,
+                BuildOutActions(),
+            });
+        }
+
+        private ABTNode BuildOutActions()
+        {
+            return new SelectorNode(new List<ABTNode>
+            {
+                BuildWait(),
+                //BuildLeaveTip(),
+                BuildStandUp(),
+                BuildMoveToHome()
+            });
+        }
+
+        private ABTNode BuildWait()
+        {
+            var checkStomach = new ConditionNode(() => _stomach.IsHungry);
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                checkStomach,
+                DebugNode("HUNGRY!")
+            });
+        }
+
+        private ABTNode BuildLeaveTip()
+        {
             throw new NotImplementedException();
+        }
+
+        private ABTNode BuildStandUp()
+        {
+            var isNotStadding = new ConditionNode(() => !_animator.IsStanding);
+            
+            var hasNotTarget = new ConditionNode(() => !_motion.HasTarget);
+
+            var lockMotion = new ActionNode(() =>
+            {
+                _motion.IsFreeze = true;
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var standUpAnim = new ActionNode(() =>
+            {
+                _animator.StandUp();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var goHome = new ActionNode(() =>
+            {
+                _model.GoHome();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                isNotStadding,
+                hasNotTarget,
+                standUpAnim,
+                lockMotion,
+                goHome,
+            });
+        }
+
+
+        private ABTNode BuildMoveToHome()
+        {
+            var hasNotReachedTarget = new ConditionNode(() => !_motion.HasReachedTarget);
+            var isNotStadding = new ConditionNode(() => !_animator.IsStanding);
+
+            var runAnimActive = new ActionNode(() =>
+            {
+                _animator.Walk();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var motionActivate = new ActionNode(() =>
+            {
+                _motion.IsFreeze = false;
+
+                return NodeStatus.SUCCESS;
+            });
+
+            return new SequenceNode(new List<ABTNode>
+            {
+                hasNotReachedTarget,
+                isNotStadding,
+                runAnimActive,
+                motionActivate,
+                DebugNode("MoveToHome")
+            });
         }
 
         public ABTNode BuildDeath()

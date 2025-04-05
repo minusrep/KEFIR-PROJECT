@@ -2,10 +2,11 @@ using UnityEngine;
 
 namespace Root.Rak.Agents.Visitor
 {
+
     public class VisitorAnimator
     {
-        public bool IsSidding { get; private set; }
-        public bool IsStanding { get; private set; }
+        public bool IsSidding { get; private set; } = false;
+        public bool IsStanding { get; private set; } = false;
         
         private readonly Animator _stateMachine;
 
@@ -14,9 +15,12 @@ namespace Root.Rak.Agents.Visitor
         private readonly int IsStandUpHash = Animator.StringToHash("IsStandUp");
         private readonly int IsDeadHash = Animator.StringToHash("IsDead");
 
-        public VisitorAnimator(Animator stateMachine)
+        public VisitorAnimator(Animator stateMachine, VisitorAnimatorHandler animHandler)
         {
             _stateMachine = stateMachine;
+
+            animHandler.EndSidDownEvent += EndSidDownHandler;
+            animHandler.EndStandUpEvent += EndStandUpHandler;
         }
 
         public void Walk() 

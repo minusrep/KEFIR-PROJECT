@@ -1,3 +1,4 @@
+using System;
 using Root.Rak.Tests;
 
 namespace Root.Rak.Agents.Visitor
@@ -5,9 +6,7 @@ namespace Root.Rak.Agents.Visitor
 
     public class VisitorModel
     {
-        public bool HasTarget { get; private set; }
-
-        public VisitorStatus Status { get; private set; }
+        public VisitorStatus Status { get; set; }
         public bool IsLife { get; private set; }
         public bool IsDead { get; set; }
 
@@ -28,13 +27,20 @@ namespace Root.Rak.Agents.Visitor
 
         public void SelectTarget()
         {
-            IVisitorTarget place = _provider.RequestTarget();
+            IVisitorTarget place;
+
+            if (!_provider.CheckPlace(out place)) return ;
+
+            _motion.SetTarget(place);
+        }
+
+        public void GoHome()
+        {
+            IVisitorTarget place = _provider.GetHome();
 
             if (place == null) return;
 
             _motion.SetTarget(place);
-
-            HasTarget = true;
         }
     }
 }

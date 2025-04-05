@@ -8,16 +8,12 @@ namespace Root.Rak.Tests
     {
         [SerializeField] private TestVisitorTarget[] _targets;
 
-        public IVisitorTarget RequestTarget()
+
+        public TestVisitorTarget Home;
+
+        public IVisitorTarget GetHome()
         {
-            IVisitorTarget place;
-
-            if (CheckPlace(out place))
-                return place;
-
-            place = null;
-
-            return place;
+            return Home;
         }
 
         public bool CheckPlace()

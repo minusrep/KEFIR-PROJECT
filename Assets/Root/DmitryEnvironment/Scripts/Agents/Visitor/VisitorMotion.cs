@@ -1,9 +1,12 @@
+using System;
 using UnityEngine.AI;
 
 namespace Root.Rak.Agents.Visitor
 {
     public class VisitorMotion
     {
+        public bool HasTarget { get; private set; }
+
         public bool HasReachedTarget { get; private set; }
 
         public bool IsFreeze
@@ -45,10 +48,18 @@ namespace Root.Rak.Agents.Visitor
         }
 
         public void ClearTarget()
-            => _target = null;
+        {
+            _target = null;
+
+            HasTarget = false;
+        }
 
         public void SetTarget(IVisitorTarget target)
-            => _target = target;
+        {
+            _target = target;
+
+            HasTarget = true;
+        }
 
         private void Move()
             => _controller.SetDestination(_target.Position);

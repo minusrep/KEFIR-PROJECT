@@ -1,12 +1,21 @@
+using UnityEngine;
+
 namespace Root.Rak.Agents.Visitor
 {
-    public class VisitorStomach
+    public class VisitorStomach : MonoBehaviour
     {
-        public bool IsHungry { get; private set; }
+        public bool IsHungry => _isHungry;
+
+        public bool _isHungry;
+
+        private void Awake()
+        {
+            _isHungry = true;
+        }
 
         public void Feed()
         {
-            IsHungry = false;
+            _isHungry = false;
         }
     }
 }

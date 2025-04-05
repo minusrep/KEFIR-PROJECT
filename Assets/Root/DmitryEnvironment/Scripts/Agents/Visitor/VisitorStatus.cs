@@ -1,4 +1,4 @@
 namespace Root.Rak.Agents.Visitor
 {
-    public enum VisitorStatus { IN, WAIT, OUT }
+    public enum VisitorStatus { IN,  OUT }
 }

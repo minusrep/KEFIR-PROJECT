@@ -4,10 +4,13 @@ using UnityEngine.AI;
 
 namespace Root.Rak.Agents.Visitor
 {
-    [RequireComponent(typeof(NavMeshAgent))]
+
+    [RequireComponent(typeof(NavMeshAgent), typeof(VisitorStomach))]
     public class VisitorAgent : MonoBehaviour
     {
         public TestVisitorTargetsProvider _provider;
+
+        public VisitorAnimatorHandler AnimHandler;
 
         private VisitorModel _model;
 
@@ -21,11 +24,11 @@ namespace Root.Rak.Agents.Visitor
         {
             _motion = new VisitorMotion(GetComponent<NavMeshAgent>());
 
-            _animator = new VisitorAnimator(GetComponentInChildren<Animator>());
+            _animator = new VisitorAnimator(GetComponentInChildren<Animator>(), AnimHandler);
 
             _model = new VisitorModel(_provider, _motion);
 
-            _brain = new VisitorBrain(_animator, _model, _motion);
+            _brain = new VisitorBrain(_animator, _model, _motion, GetComponent<VisitorStomach>());
         }
 
         private void Update()
