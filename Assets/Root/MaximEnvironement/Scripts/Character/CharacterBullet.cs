@@ -19,9 +19,19 @@ namespace Root.MaximEnvironment
 
         private void OnCollisionEnter(Collision other)
         {
+            Debug.Log(other.gameObject.name);
+            
             if (other.gameObject.TryGetComponent<IEntityAttacked>(out var attacked))
+            {
+                Debug.Log(attacked);
+
                 if (attacked.ID == TeamID.AGENT)
+                {
+                    Debug.LogWarning(attacked);
                     attacked.TakeDamage(new TestAttack(10f));
+                }
+                
+            }
         }
     }
 }
