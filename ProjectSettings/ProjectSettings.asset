@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 23
-  productGUID: 00000000000000000000000000000000
+  productGUID: 021b3cbf91bb90047b266c1e787055a8
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -690,7 +690,7 @@ PlayerSettings:
   cloudProjectId: 074d7fba-9c24-4333-aeea-373c520d44c7
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
+  projectName: KEFIR PROJECT
   organizationId: unity_ijdngmebslr1za
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

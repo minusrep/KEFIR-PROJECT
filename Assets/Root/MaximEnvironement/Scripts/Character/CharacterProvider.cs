@@ -10,45 +10,12 @@ namespace Root.MaximEnvironment
         
         [SerializeField] private Animator _characterAnimator;
         
-        private void SwitchHolstered()
+        public void SwitchHolstered()
         {
             Holstered = !Holstered;
         
             _characterAnimator.SetBool(HolsteredName, Holstered);
         }
-    }
-
-    public class CharacterHands : MonoBehaviour
-    {
-        public CharacterProvider _characterProvider;
-    }
-
-    public class CharacterInteraction : MonoBehaviour
-    {
-    }
-
-    public class CharacterInventory : MonoBehaviour
-    {
-    
-    }
-
-    public class CharacterInputSystem : MonoBehaviour
-    {
-        
-    }
-
-    public interface IInteractableObject
-    {
-        string Description { get; }
-        
-        void Interact();
-
-        void Interact(IInventory inventory);
-    }
-
-    public interface IInventory
-    {
-        
     }
 }
 
