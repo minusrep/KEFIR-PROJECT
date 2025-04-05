@@ -1,32 +1,61 @@
+using Root.Rak.Tests;
+using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEngine;
+using UnityEngine.AI;
+
 namespace Root.Rak.Agents.Enemy
 {
-    public class EnemyAgent
+
+
+    [RequireComponent(typeof(NavMeshAgent))]
+    public class EnemyAgent : MonoBehaviour, IEntityAttacked
     {
+        public TestTargetProvider TargetProvider;
 
-    }
+        public Animator Anim;
 
-    public class EnemyBrain
-    {
+        public ChildrenAnimatorHandler AnimHandler;
 
-    }
+        public ChildTriggerHandler AttackTriggerHandler;
 
-    public class EnemyAvatar
-    {
+        private EnemyAnimator _animator;
 
-    }
+        private EnemyAttaker _attacker;
 
-    public class EnemyModel
-    {
+        private EnemyMotion _motion;
 
-    }
+        private EnemyModel _model;
 
-    public class EnemyEyes
-    {
 
-    }
+        private EnemyBrain _brain;
 
-    public class EnemyAttacker
-    {
-        
+        public TeamID ID { get; private set; } = TeamID.AGENT;
+
+        public void Start()
+        {
+            _animator = new EnemyAnimator(Anim, AnimHandler);
+
+            _attacker = new EnemyAttaker(AttackTriggerHandler, ID);
+
+            _motion = new EnemyMotion(GetComponent<NavMeshAgent>(), null);
+
+            _model = new EnemyModel(TargetProvider, _motion, transform);
+
+            _brain = new EnemyBrain(_model, _animator, _motion, _attacker);
+        }
+
+        public void TakeDamage(IAttack attack)
+        {
+            if (!_model.IsLife) return;
+
+            _model.TakeDamage();
+        }
+
+        public void Update()
+        {
+            _motion.Update();
+
+            _brain.Update();
+        }
     }
 }

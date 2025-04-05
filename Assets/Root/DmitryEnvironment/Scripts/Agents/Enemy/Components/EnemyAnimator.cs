@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Root.Rak.Agents.Enemy
 {
@@ -10,7 +9,7 @@ namespace Root.Rak.Agents.Enemy
         private readonly Animator _stateMachine;
 
         private readonly int IsRunHash = Animator.StringToHash("IsRun");
-        private readonly int IsAttackHash = Animator.StringToHash("IsAttack");
+        private readonly int IsAttackHash = Animator.StringToHash("IsBaseAttack");
         private readonly int IsDeadHash = Animator.StringToHash("IsDead");
 
         public EnemyAnimator(Animator stateMachine, IChildrenAnimatorHandler animatorHandler)
@@ -24,7 +23,7 @@ namespace Root.Rak.Agents.Enemy
             => _stateMachine.SetBool(IsRunHash, false);
 
         public void Run()
-            => _stateMachine.SetBool(IsAttackHash, true);
+            => _stateMachine.SetBool(IsRunHash, true);
 
         public void Attack()
         {
@@ -39,7 +38,10 @@ namespace Root.Rak.Agents.Enemy
         private void RegisterEvents(IChildrenAnimatorHandler animatorHandler)
             => animatorHandler.EndAttackEvent += EndAttackHandler;
 
-        private void EndAttackHandler() 
-            => HasAttackProcessing = false;
+        private void EndAttackHandler()
+        {
+            Debug.Log("End Attack");
+            HasAttackProcessing = false;
+        }
     }
 }

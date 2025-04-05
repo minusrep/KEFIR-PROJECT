@@ -18,7 +18,7 @@ namespace Root.Rak.Agents.Enemy
 
         private readonly IEnemyMotionConfig _config;
 
-        private Transform _target;
+        private ITarget _target;
 
         public EnemyMotion(NavMeshAgent controller, IEnemyMotionConfig config)
         {
@@ -26,7 +26,10 @@ namespace Root.Rak.Agents.Enemy
 
             _config = config;
 
-            InitConfig();
+
+            IsFreeze = false;
+
+            //InitConfig();
         }
 
         private void InitConfig()
@@ -34,8 +37,6 @@ namespace Root.Rak.Agents.Enemy
             _controller.speed = _config.SpeedMotion;
 
             _controller.stoppingDistance = 2.0f;
-
-            IsFreeze = false;
         }
 
         public void Update()
@@ -54,11 +55,11 @@ namespace Root.Rak.Agents.Enemy
         public void ClearTarget()
             => _target = null;
 
-        public void SetTarget(Transform target)
+        public void SetTarget(ITarget target)
             => _target = target;
 
         private void Move()
-            => _controller.SetDestination(_target.position);
+            => _controller.SetDestination(_target.Position);
 
         private void CheckReachedDestination()
             => HasReachedTarget = !_controller.pathPending && _controller.remainingDistance <= _controller.stoppingDistance;
