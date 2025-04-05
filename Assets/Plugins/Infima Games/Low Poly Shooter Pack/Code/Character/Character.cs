@@ -1025,6 +1025,8 @@ namespace InfimaGames.LowPolyShooterPack
 			if (!cursorLocked)
 				return;
 
+			if (characterAnimator.GetBool("Holstered")) return;
+
 			//Switch.
 			switch (context)
 			{
@@ -1295,6 +1297,8 @@ namespace InfimaGames.LowPolyShooterPack
 			//Null Check.
 			if (inventory == null)
 				return;
+
+			return;
 			
 			//Switch.
 			switch (context)
