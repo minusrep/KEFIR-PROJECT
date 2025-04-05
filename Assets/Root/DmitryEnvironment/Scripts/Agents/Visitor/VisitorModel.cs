@@ -35,6 +35,8 @@ namespace Root.Rak.Agents.Visitor
             _motion.SetTarget(place);
 
             place.Table.ArriveFoodEvent += _stomach.Feed;
+
+            //TODO: —делай так, чтобы визитор уведомил когда придет
         }
 
         public void GoHome()

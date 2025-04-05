@@ -6,6 +6,8 @@ namespace Root.MaximEnvironment
 {
     public class GuestTable : InteractiveObject, ITableFood
     {
+        public bool HasVisitor { get; set; } = false;
+
         public event Action ArriveFoodEvent;
         
         public void SetItem(Item item)
