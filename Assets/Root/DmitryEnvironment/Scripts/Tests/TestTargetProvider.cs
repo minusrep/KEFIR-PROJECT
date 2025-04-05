@@ -1,4 +1,6 @@
 ﻿using Root.Rak.Agents.Enemy;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Root.Rak.Tests
@@ -9,23 +11,47 @@ namespace Root.Rak.Tests
 
         public TestPlayerController Player;
 
-        public TestDoor Door;
+        public List<TestDoor> Doors;
+
+        //public List<TestClient> Clients;
 
         private void Awake()
         {
             IsRequestDoor = true;
         }
 
-        public ITarget RequestTarget()
+        public ITarget RequestTarget(Transform enemy)
         {
-/*            if (IsRequestDoor)
-            {
-                IsRequestDoor = false;
+            ITarget target = Player;
+            ITarget newTarget;
 
-                return Door;
-            }
-*/
+            var distanceBetweenPlayer = Vector3.Distance(Player.Position, enemy.position);
+
+
+            if (CheckDoors(out newTarget, distanceBetweenPlayer, enemy))
+                return newTarget;
+
+            //TODO: Add Check Client Agents
+
             return Player;
+
+        }
+
+        private bool CheckDoors(out ITarget newTarget, float distanceBetweenPlayer, Transform enemy)
+        {
+            newTarget = null;
+
+            foreach (var door in Doors)
+            {
+                if (distanceBetweenPlayer > Vector3.Distance(enemy.position, door.Position))
+                {
+                    newTarget = door;
+
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

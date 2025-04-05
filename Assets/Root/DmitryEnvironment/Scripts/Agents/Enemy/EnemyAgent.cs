@@ -27,7 +27,7 @@ namespace Root.Rak.Agents.Enemy
 
             _motion = new EnemyMotion(GetComponent<NavMeshAgent>(), null);
 
-            _model = new EnemyModel(TargetProvider, _motion);
+            _model = new EnemyModel(TargetProvider, _motion, transform);
 
             _brain = new EnemyBrain(_model, _animator, _motion);
         }

@@ -9,7 +9,7 @@ namespace Root.Rak.Agents.Enemy
         private readonly Animator _stateMachine;
 
         private readonly int IsRunHash = Animator.StringToHash("IsRun");
-        private readonly int IsAttackHash = Animator.StringToHash("IsAttack");
+        private readonly int IsAttackHash = Animator.StringToHash("IsBaseAttack");
         private readonly int IsDeadHash = Animator.StringToHash("IsDead");
 
         public EnemyAnimator(Animator stateMachine, IChildrenAnimatorHandler animatorHandler)

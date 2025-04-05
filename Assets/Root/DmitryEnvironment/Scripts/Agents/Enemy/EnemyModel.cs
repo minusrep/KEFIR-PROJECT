@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using UnityEngine;
 
 namespace Root.Rak.Agents.Enemy
 {
@@ -10,13 +12,17 @@ namespace Root.Rak.Agents.Enemy
         public ITarget CurrentTarget { get; private set; }
 
         private readonly ITargetProvider _targetProvider;
-        private readonly EnemyMotion _motion;
 
-        public EnemyModel(ITargetProvider targetProvider, EnemyMotion motion)
+        private readonly EnemyMotion _motion;
+        
+        private readonly Transform _me;
+
+        public EnemyModel(ITargetProvider targetProvider, EnemyMotion motion, Transform me)
         {
             _targetProvider = targetProvider;
             
             _motion = motion;
+            _me = me;
             
             IsLife = true;
 
@@ -27,9 +33,10 @@ namespace Root.Rak.Agents.Enemy
 
         public void UpdateTarget()
         {
+            _motion.SetTarget(_targetProvider.RequestTarget(_me));
+            
             HasTarget = true;
 
-            _motion.SetTarget(_targetProvider.RequestTarget());
         }
     }
 }
