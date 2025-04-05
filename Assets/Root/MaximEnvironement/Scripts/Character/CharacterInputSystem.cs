@@ -1,27 +1,29 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Root.MaximEnvironment
 {
     public class CharacterInputSystem : MonoBehaviour
     {
-        [SerializeField] private CharacterInteraction _characterInteraction;
-        
-        [SerializeField] private CharacterProvider _characterProvider;
-        
+        public CharacterProvider CharacterProvider;
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             
             Gizmos.DrawRay(Camera.main.ScreenPointToRay(Input.mousePosition));
         }
-        
+
+        private void Start() 
+            => CharacterProvider.SetHolstered(false);
+
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F))
-                _characterInteraction.Interact();
-            
             if(Input.GetKeyDown(KeyCode.G))
-                _characterProvider.SwitchHolstered();
+                CharacterProvider.SwitchHolstered();
         }
     }
 }

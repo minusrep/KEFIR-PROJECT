@@ -9,6 +9,16 @@ namespace Root.MaximEnvironment
         public bool Holstered { get; private set; }
         
         [SerializeField] private Animator _characterAnimator;
+
+        private void Start() 
+            => SetHolstered(false);
+
+        public void SetHolstered(bool value)
+        {
+            Holstered = value;
+        
+            _characterAnimator.SetBool(HolsteredName, Holstered);
+        }
         
         public void SwitchHolstered()
         {
