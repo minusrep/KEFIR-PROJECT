@@ -1,3 +1,4 @@
+using Root.Rak.Agents;
 using Root.Rak.Agents.Visitor;
 using UnityEngine;
 
@@ -8,5 +9,10 @@ namespace Root.Rak.Tests
         public bool HasReservation { get; set; }
 
         public Vector3 Position => transform.position;
+
+        public ITableFood Table => _tableFood;
+
+        [SerializeField] private ITableFood _tableFood;
+
     }
 }

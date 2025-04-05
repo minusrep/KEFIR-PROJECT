@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Root.Rak.Agents
+﻿namespace Root.Rak.Agents
 {
+
     public enum TeamID { PLAYER, AGENT }
 
     public interface IEntityAttacked

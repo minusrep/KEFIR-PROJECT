@@ -26,7 +26,7 @@ namespace Root.Rak.Agents.Visitor
 
             _animator = new VisitorAnimator(GetComponentInChildren<Animator>(), AnimHandler);
 
-            _model = new VisitorModel(_provider, _motion);
+            _model = new VisitorModel(_provider, _motion, GetComponent<VisitorStomach>());
 
             _brain = new VisitorBrain(_animator, _model, _motion, GetComponent<VisitorStomach>());
         }

@@ -7,5 +7,7 @@ namespace Root.Rak.Agents.Visitor
         public bool HasReservation { get; }
 
         public Vector3 Position { get; }
+
+        public ITableFood Table {  get; }
     }
 }
