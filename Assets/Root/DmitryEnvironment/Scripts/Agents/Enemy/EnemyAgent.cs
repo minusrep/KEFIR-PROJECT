@@ -1,11 +1,18 @@
+using Root.Rak.Tests;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Root.Rak.Agents.Enemy
 {
-    [RequireComponent(typeof(Animator), typeof(NavMeshAgent))]
+    [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyAgent : MonoBehaviour
     {
+        public TestTargetProvider TargetProvider;
+
+        public Animator Anim;
+
+        public ChildrenAnimatorHandler AnimHandler;
+
         private EnemyAnimator _animator;
 
         private EnemyMotion _motion;
@@ -16,11 +23,11 @@ namespace Root.Rak.Agents.Enemy
 
         public void Start()
         {
-            _animator = new EnemyAnimator(GetComponent<Animator>(), GetComponentInChildren<ChildrenAnimatorHandler>());
+            _animator = new EnemyAnimator(Anim, AnimHandler);
 
             _motion = new EnemyMotion(GetComponent<NavMeshAgent>(), null);
 
-            _model = new EnemyModel();
+            _model = new EnemyModel(TargetProvider, _motion);
 
             _brain = new EnemyBrain(_model, _animator, _motion);
         }

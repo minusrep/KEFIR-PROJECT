@@ -1,5 +1,6 @@
 ﻿using Root.Rak.BT;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Root.Rak.Agents.Enemy
 {
@@ -28,7 +29,7 @@ namespace Root.Rak.Agents.Enemy
             _root = new SelectorNode(new List<ABTNode>
             {
                 BuildLife(),
-                BuildDead()
+                //BuildDead()
             });
         }
 
@@ -67,7 +68,8 @@ namespace Root.Rak.Agents.Enemy
             return new SequenceNode(new List<ABTNode>
             {
                 hasNotTarget,
-                selectTarget
+                selectTarget,
+                DebugNode("Select Target")
             });
 
         }
@@ -75,6 +77,9 @@ namespace Root.Rak.Agents.Enemy
         private ABTNode BuildMoveToTarget()
         {
             var hasNotReachedTarget = new ConditionNode(() => !_motion.HasReachedTarget);
+
+            var isNotAttackProcess = new ConditionNode(() => !_animator.HasAttackProcessing);
+            
 
             var runAnimActive = new ActionNode(() => 
             {
@@ -93,8 +98,10 @@ namespace Root.Rak.Agents.Enemy
             return new SequenceNode(new List<ABTNode>
             {
                 hasNotReachedTarget,
+                isNotAttackProcess,
                 runAnimActive,
-                motionActivate
+                motionActivate,
+                DebugNode("Move")
             });
         }
 
@@ -109,16 +116,35 @@ namespace Root.Rak.Agents.Enemy
                 return NodeStatus.SUCCESS;
             });
 
+            var motionLock = new ActionNode(() =>
+            {
+                _motion.IsFreeze = true;
+
+                return NodeStatus.SUCCESS;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
                 isNotAttackProcess,
-                attackAnimActivate
+                attackAnimActivate,
+                motionLock,
+                DebugNode("Attack"),
             });
         }
 
         private ABTNode BuildDead()
         {
             return default(ABTNode);
+        }
+
+        public ActionNode DebugNode(string message)
+        {
+            return new ActionNode(() =>
+            {
+                Debug.Log(message);
+
+                return NodeStatus.SUCCESS;
+            });
         }
     }
 }
