@@ -1,8 +1,9 @@
 using System;
+using UnityEngine;
 
 namespace Root.Rak.Agents.Enemy
 {
-    public class ChildrenAnimatorHandler : IChildrenAnimatorHandler
+    public class ChildrenAnimatorHandler : MonoBehaviour, IChildrenAnimatorHandler
     {
         public event Action EndAttackEvent;
 
