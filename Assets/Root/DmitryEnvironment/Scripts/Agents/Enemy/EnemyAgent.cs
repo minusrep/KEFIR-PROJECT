@@ -29,9 +29,4 @@ namespace Root.Rak.Agents.Enemy
     {
         
     }
-
-    public class EnemyAnimator
-    {
-
-    }
 }
