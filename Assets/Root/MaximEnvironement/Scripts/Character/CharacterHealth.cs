@@ -17,7 +17,6 @@ namespace Root.MaximEnvironment
         
         public TeamID ID => PlayerID;
         
-
         public TeamID PlayerID;
         
         public float CurrentHealth = 100f;

@@ -8,11 +8,15 @@ namespace Root.MaximEnvironment
 
         private Collider _collider;
         
+        private AudioListener _audioListener;
+        
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
             
             _collider = GetComponent<Collider>();
+            
+            _audioListener = GetComponent<AudioListener>();
             
             _rigidbody.isKinematic = true;
             
@@ -26,6 +30,8 @@ namespace Root.MaximEnvironment
             _collider.enabled = true;
             
             _rigidbody.velocity = Physics.gravity;
+            
+            _audioListener.enabled = false;
         }
     }
 }
