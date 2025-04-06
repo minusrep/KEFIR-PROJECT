@@ -29,13 +29,15 @@ namespace Root.Rak.Agents.Visitor
             IsLife = true;
             IsDead = false;
 
+            _place = null;
+
             me.Dead += ResetReservation;
         }
 
         public void SelectTarget()
         {
 
-            if (!_provider.CheckPlace(_place)) return ;
+            if (!_provider.CheckPlace(ref _place)) return ;
 
             _motion.SetTarget(_place);
 

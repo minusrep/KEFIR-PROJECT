@@ -27,7 +27,7 @@ namespace Root.Rak.Tests
             return false;
         }
 
-        public bool CheckPlace(IVisitorTarget target)
+        public bool CheckPlace(ref IVisitorTarget target)
         {
             target = null;
 
