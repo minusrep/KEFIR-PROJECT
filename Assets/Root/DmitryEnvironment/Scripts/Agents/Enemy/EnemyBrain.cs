@@ -161,6 +161,15 @@ namespace Root.Rak.Agents.Enemy
                 return NodeStatus.SUCCESS;
             });
 
+            var clearTarget = new ActionNode(() =>
+            {
+                _motion.ClearTarget();
+
+                _motion.IsFreeze = true;
+
+                return NodeStatus.SUCCESS;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
                 isNotDead,
