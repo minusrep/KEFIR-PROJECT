@@ -8,7 +8,6 @@ namespace Root.Rak.Tests
     {
         [SerializeField] private TestVisitorTarget[] _targets;
 
-
         public TestVisitorTarget Home;
 
         public IVisitorTarget GetHome()

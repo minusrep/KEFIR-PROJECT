@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8138287122354519831}
   - component: {fileID: 8138287122354519830}
+  - component: {fileID: 1171350265824531981}
+  - component: {fileID: 6507732852380814464}
   m_Layer: 0
   m_Name: VisitorStartPoint
   m_TagString: Untagged
@@ -168,3 +170,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _color: {r: 0, g: 1, b: 0.03938818, a: 0}
   _radius: 0.5
+--- !u!114 &1171350265824531981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138287122354519832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623158914b55cf74bbcfe81d4459df1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  _doorsAdministrator: {fileID: 0}
+  Visitors: []
+--- !u!114 &6507732852380814464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138287122354519832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5006fc2e868592e4c922a2f48406e03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
