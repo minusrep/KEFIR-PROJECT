@@ -318,6 +318,8 @@ namespace Root.Rak.Agents.Visitor
             {
                 _motion.ClearTarget();
 
+                _motion.IsFreeze = true;
+
                 return NodeStatus.SUCCESS;
             });
 
