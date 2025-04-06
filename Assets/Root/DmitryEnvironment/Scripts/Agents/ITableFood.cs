@@ -4,8 +4,10 @@ namespace Root.Rak.Agents
 {
     public interface ITableFood
     {
-        bool HasVisitor { get; set; }
+        bool HasVisitor { get; }
 
         event Action ArriveFoodEvent;
+
+        void ResetVisitor();
     }
 }

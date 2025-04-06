@@ -33,7 +33,7 @@ namespace Root.Rak.Agents.Visitor
 
             _animator = new VisitorAnimator(GetComponentInChildren<Animator>(), AnimHandler);
 
-            _model = new VisitorModel(provider, _motion, GetComponent<VisitorStomach>());
+            _model = new VisitorModel(provider, _motion, GetComponent<VisitorStomach>(), this);
 
             _brain = new VisitorBrain(_animator, _model, _motion, GetComponent<VisitorStomach>());
         }

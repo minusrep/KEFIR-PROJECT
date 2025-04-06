@@ -1,4 +1,6 @@
+using Root.Rak.Agents.Enemy;
 using Root.Rak.Tests;
+using TMPro;
 
 namespace Root.Rak.Agents.Visitor
 {
@@ -13,7 +15,9 @@ namespace Root.Rak.Agents.Visitor
         private readonly VisitorMotion _motion;
         private readonly VisitorStomach _stomach;
 
-        public VisitorModel(TestVisitorTargetsProvider provider, VisitorMotion motion, VisitorStomach stomach)
+        private IVisitorTarget _place;
+
+        public VisitorModel(TestVisitorTargetsProvider provider, VisitorMotion motion, VisitorStomach stomach, ITarget me)
         {
             _provider = provider;
             _motion = motion;
@@ -24,19 +28,20 @@ namespace Root.Rak.Agents.Visitor
 
             IsLife = true;
             IsDead = false;
+
+            me.Dead += ResetReservation;
         }
 
         public void SelectTarget()
         {
-            IVisitorTarget place;
 
-            if (!_provider.CheckPlace(out place)) return ;
+            if (!_provider.CheckPlace(_place)) return ;
 
-            _motion.SetTarget(place);
+            _motion.SetTarget(_place);
 
-            place.Table.ArriveFoodEvent += _stomach.Feed;
+            _place.HasReservation = true;
 
-            //TODO: —делай так, чтобы визитор уведомил когда придет
+            _place.Table.ArriveFoodEvent += _stomach.Feed;
         }
 
         public void GoHome()
@@ -46,6 +51,13 @@ namespace Root.Rak.Agents.Visitor
             if (place == null) return;
 
             _motion.SetTarget(place);
+        }
+
+        private void ResetReservation()
+        {
+            _place.HasReservation = false;
+
+            _place.Table.ResetVisitor();
         }
     }
 }
