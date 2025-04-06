@@ -8,11 +8,13 @@ namespace Root.Rak.Gameplay.Generators
     {
         private List<ITarget> _targets;
 
-        private void Awake() 
-            => _targets = new List<ITarget>();
+        public void Register(ITarget target)
+        {
+            if (_targets == null)
+                _targets = new List<ITarget>();
 
-        public void Register(ITarget target) 
-            => _targets.Add(target);
+            _targets.Add(target);
+        }
 
         public void Unregister(ITarget target)
             => _targets.Remove(target); 
