@@ -1,5 +1,6 @@
 using Root.Rak.Agents.Enemy;
 using Root.Rak.Tests;
+using UnityEngine;
 
 namespace Root.Rak.Agents.Visitor
 {
@@ -20,12 +21,16 @@ namespace Root.Rak.Agents.Visitor
 
         private float _health;
 
-        public VisitorModel(TestVisitorTargetsProvider provider, VisitorMotion motion, VisitorStomach stomach, ITarget me)
+        private Collider _collider;
+
+        public VisitorModel(TestVisitorTargetsProvider provider, VisitorMotion motion, VisitorStomach stomach, ITarget me, Collider collider)
         {
             _provider = provider;
             _motion = motion;
 
             _stomach = stomach;
+
+            _collider = collider;
             
             Status = VisitorStatus.IN;
 
@@ -82,9 +87,16 @@ namespace Root.Rak.Agents.Visitor
 
         public void ResetReservation()
         {
-            _place.HasReservation = false;
+            if (_place != null)
+            {
+                _place.HasReservation = false;
 
-            _place.Table.ResetVisitor();
+                _place.Table.ResetVisitor();
+
+                _place = null;
+            }
+
+            _collider.enabled = false;
         }
     }
 }

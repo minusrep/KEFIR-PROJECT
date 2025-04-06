@@ -33,9 +33,9 @@ namespace Root.Rak.Agents.Visitor
         {
             _motion = new VisitorMotion(GetComponent<NavMeshAgent>());
 
-            _animator = new VisitorAnimator(GetComponentInChildren<Animator>(), AnimHandler);
+            _animator = new VisitorAnimator(GetComponentInChildren<Animator>(), AnimHandler, gameObject);
 
-            _model = new VisitorModel(provider, _motion, GetComponent<VisitorStomach>(), this);
+            _model = new VisitorModel(provider, _motion, GetComponent<VisitorStomach>(), this, GetComponent<Collider>());
 
             _brain = new VisitorBrain(_animator, _model, _motion, GetComponent<VisitorStomach>());
 
@@ -47,6 +47,8 @@ namespace Root.Rak.Agents.Visitor
 
         private void Update()
         {
+            if (!_model.IsLife && _model.IsDead) return;
+
             _motion.Update();
 
             _brain.Update();
