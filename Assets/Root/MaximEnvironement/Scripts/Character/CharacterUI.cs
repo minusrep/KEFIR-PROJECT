@@ -2,6 +2,7 @@
 using Root.MaximEnvironement;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Root.MaximEnvironment
@@ -35,6 +36,14 @@ namespace Root.MaximEnvironment
         
         [SerializeField] private GameObject _diedWindow;
         
+        [SerializeField] private GameObject _aliveMenu;
+
+        [SerializeField] private Button _menuButton;
+        
+        [SerializeField] private Button _winButton;
+
+        [SerializeField] private GameObject _winPanel;
+
         private void Start()
         {
             _characterHealth = GetComponent<CharacterHealth>();
@@ -44,8 +53,32 @@ namespace Root.MaximEnvironment
              _characterInventory = GetComponent<CharacterInventory>();
              
              _characterProvider = GetComponent<CharacterProvider>();
+            
+             _winButton.onClick.AddListener(() =>
+             {
+                 SceneManager.LoadScene(0);
+             });
+
+             GameLoop.OnWinEvent += InvokeWinMenu;
              
-             _characterHealth.Dead += () => _diedWindow.gameObject.SetActive(true);
+             _characterHealth.Dead += () =>
+             {
+                 _aliveMenu.SetActive(false);
+                 
+                 _diedWindow.gameObject.SetActive(true);
+             };
+             
+             _menuButton.onClick.AddListener(() =>
+             {
+                 SceneManager.LoadScene(0);
+             });
+        }
+
+        private void InvokeWinMenu()
+        {
+            _winPanel.SetActive(true);
+            
+            _characterHealth.Die();
         }
         
         private void Update()
@@ -61,6 +94,7 @@ namespace Root.MaximEnvironment
              UpdateMoneyAmount();
 
              UpdateClocks();
+
         }
 
         private void UpdateClocks()

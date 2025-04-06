@@ -512,8 +512,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllTime: 0
-  TimeScale: 1
+  TimeScale: 2
   StartTime: 540
+  EndTime: 1200
 --- !u!4 &370562042
 Transform:
   m_ObjectHideFlags: 0
