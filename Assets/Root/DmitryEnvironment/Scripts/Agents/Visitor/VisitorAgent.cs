@@ -54,7 +54,8 @@ namespace Root.Rak.Agents.Visitor
 
         public void TakeDamage(IAttack attack)
         {
-            _model.TakeDamage(attack.Damage);
+            if (!_model.TakeDamage(attack.Damage))
+                Dead?.Invoke();
         }
     }
 }

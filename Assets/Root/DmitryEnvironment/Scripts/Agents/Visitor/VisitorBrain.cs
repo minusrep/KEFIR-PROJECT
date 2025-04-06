@@ -314,11 +314,19 @@ namespace Root.Rak.Agents.Visitor
                 return NodeStatus.SUCCESS;
             });
 
+            var clearTarget = new ActionNode(() =>
+            {
+                _motion.ClearTarget();
+
+                return NodeStatus.SUCCESS;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
                 isNotDead,
                 deadAction,
                 deadAnim,
+                clearTarget
             });
         }
 

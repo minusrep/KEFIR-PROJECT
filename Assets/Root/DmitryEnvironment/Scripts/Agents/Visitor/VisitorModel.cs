@@ -28,7 +28,6 @@ namespace Root.Rak.Agents.Visitor
             Status = VisitorStatus.IN;
 
             IsLife = true;
-            IsDead = false;
 
             _place = null;
 
@@ -37,7 +36,7 @@ namespace Root.Rak.Agents.Visitor
             _health = 10;
         }
 
-        public void TakeDamage(float damage)
+        public bool TakeDamage(float damage)
         {
             _health -= damage;
 
@@ -46,7 +45,11 @@ namespace Root.Rak.Agents.Visitor
                 IsLife = false;
 
                 _health = 0;
+
+                return false;
             }
+
+            return true;
         }
 
         public void SelectTarget()
