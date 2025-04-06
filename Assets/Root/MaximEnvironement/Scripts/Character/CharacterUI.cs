@@ -33,6 +33,7 @@ namespace Root.MaximEnvironment
 
         [SerializeField] private TextMeshProUGUI _clocks;
         
+        [SerializeField] private GameObject _diedWindow;
         
         private void Start()
         {
@@ -43,6 +44,8 @@ namespace Root.MaximEnvironment
              _characterInventory = GetComponent<CharacterInventory>();
              
              _characterProvider = GetComponent<CharacterProvider>();
+             
+             _characterHealth.Dead += () => _diedWindow.gameObject.SetActive(true);
         }
         
         private void Update()

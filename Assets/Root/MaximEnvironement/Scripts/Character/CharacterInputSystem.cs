@@ -12,6 +12,8 @@ namespace Root.MaximEnvironment
         
         public CharacterAudioProvider CharacterAudioProvider;
         
+        public CharacterHealth CharacterHealth;
+        
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
@@ -24,6 +26,8 @@ namespace Root.MaximEnvironment
 
         private void Update()
         {
+            if (CharacterHealth.IsDied) return;
+            
             CharacterProvider.SetHolstered(CharacterInventory.HandsItem != null);
             
             if (Input.GetKeyDown(KeyCode.G))

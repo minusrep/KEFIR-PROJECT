@@ -16,5 +16,10 @@ namespace Root.MaximEnvironement
 
         private void Update() 
             => AllTime += TimeScale * Time.deltaTime;
+
+        public void GlobalInit()
+        {
+            
+        }
     }
 }
