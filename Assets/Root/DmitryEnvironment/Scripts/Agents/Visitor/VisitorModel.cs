@@ -1,6 +1,5 @@
 using Root.Rak.Agents.Enemy;
 using Root.Rak.Tests;
-using TMPro;
 
 namespace Root.Rak.Agents.Visitor
 {
@@ -42,9 +41,11 @@ namespace Root.Rak.Agents.Visitor
         {
             _health -= damage;
 
-            if (_health < 0 && IsLife)
+            if (_health <= 0 && IsLife)
             {
                 IsLife = false;
+
+                _health = 0;
             }
         }
 
