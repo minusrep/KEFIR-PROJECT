@@ -58,7 +58,7 @@ namespace Root.Rak.Gameplay.Generators
 
         private IEnumerator Generating()
         {
-            yield return new WaitForSeconds(_timeBetweenSpawn);
+            yield return new WaitForSeconds(30);
 
             ConfiguratgeVisitor(CreateEnemy(_leftSpawnPoint.Position));
 
@@ -66,9 +66,9 @@ namespace Root.Rak.Gameplay.Generators
 
             while (_isActive)
             {
-                yield return new WaitForSeconds(_timeBetweenSpawn);
+                yield return new WaitForSeconds(Random.Range(60, 120));
 
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < Random.Range(2, 5); i++)
                 {
                     if (_count == _maxCount) continue;
 

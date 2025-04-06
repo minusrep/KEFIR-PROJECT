@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Root.Rak.Agents.Visitor;
+using System;
 using UnityEngine;
 
 namespace Root.Rak.Agents.Enemy
@@ -58,6 +59,11 @@ namespace Root.Rak.Agents.Enemy
         public void UpdateTarget()
         {
             ITarget target = _targetProvider.RequestTarget(_me);
+
+            VisitorAgent agent = target as VisitorAgent;
+
+            if (agent != null)
+                agent.OutEvent += ClearTarget;
 
             target.Dead += ClearTarget;
 

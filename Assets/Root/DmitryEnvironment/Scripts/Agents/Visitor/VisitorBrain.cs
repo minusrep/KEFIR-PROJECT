@@ -15,15 +15,18 @@ namespace Root.Rak.Agents.Visitor
         private readonly VisitorMotion _motion;
         private readonly VisitorStomach _stomach;
 
+        private readonly VisitorAgent _agent;
+
         private SelectorNode _root;
 
-        public VisitorBrain(VisitorAnimator animator, VisitorModel model, VisitorMotion motion, VisitorStomach stomach)
+        public VisitorBrain(VisitorAnimator animator, VisitorModel model, VisitorMotion motion, VisitorStomach stomach, VisitorAgent agent)
         {
             _animator = animator;
             _model = model;
             _motion = motion;
 
             _stomach = stomach;
+            _agent = agent;
 
             Build();
         }
@@ -258,6 +261,14 @@ namespace Root.Rak.Agents.Visitor
                 return NodeStatus.SUCCESS;
             });
 
+
+            var outEvent = new ActionNode(() =>
+            {
+                _agent.OnOut();
+
+                return NodeStatus.SUCCESS;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
                 isNotStadding,
@@ -265,7 +276,8 @@ namespace Root.Rak.Agents.Visitor
                 standUpAnim,
                 lockMotion,
                 goHome,
-                upDollars
+                upDollars,
+                outEvent
             });
         }
 
