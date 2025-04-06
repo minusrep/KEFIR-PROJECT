@@ -818,9 +818,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isLife: 1
-  _health: 100
+  _health: 20
   _id: 0
   _cost: 50
+  _currentHealth: 0
 --- !u!65 &363732275
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2527,6 +2528,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1484487210, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
+      propertyPath: MaxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484487210, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
+      propertyPath: CurrentHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1484487213, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
       propertyPath: GameLoop
       value: 
@@ -2647,9 +2656,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isLife: 1
-  _health: 100
+  _health: 20
   _id: 0
   _cost: 50
+  _currentHealth: 0
 --- !u!95 &1632212112
 Animator:
   serializedVersion: 5
