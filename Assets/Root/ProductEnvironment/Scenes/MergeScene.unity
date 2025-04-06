@@ -779,6 +779,8 @@ GameObject:
   m_Component:
   - component: {fileID: 363732273}
   - component: {fileID: 363732274}
+  - component: {fileID: 363732276}
+  - component: {fileID: 363732275}
   m_Layer: 0
   m_Name: BREAKABLE DOORight
   m_TagString: Untagged
@@ -819,6 +821,35 @@ MonoBehaviour:
   _health: 100
   _id: 0
   _cost: 50
+--- !u!65 &363732275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363732272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26814938, y: 2.4588563, z: 1.5359071}
+  m_Center: {x: -0.02888155, y: 0.7294282, z: -0.6198278}
+--- !u!54 &363732276
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363732272}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &393974156
 GameObject:
   m_ObjectHideFlags: 0
@@ -5078,21 +5109,21 @@ GameObject:
   m_IsActive: 1
 --- !u!64 &3482498680391998174
 MeshCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3482498680391998173}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4252958049393290608, guid: 40d2835ed56d280468e09d71b366eb62, type: 3}
 --- !u!54 &3482498680391998175
 Rigidbody:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -6367,21 +6398,21 @@ GameObject:
   m_IsActive: 1
 --- !u!64 &5863084997573126543
 MeshCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5863084997573126542}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4636190031305778663, guid: 40d2835ed56d280468e09d71b366eb62, type: 3}
 --- !u!54 &5863084997573126544
 Rigidbody:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -7968,21 +7999,21 @@ GameObject:
   m_IsActive: 1
 --- !u!64 &8436044119034424709
 MeshCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8436044119034424708}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5356186636178142005, guid: 40d2835ed56d280468e09d71b366eb62, type: 3}
 --- !u!54 &8436044119034424710
 Rigidbody:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
