@@ -87,9 +87,14 @@ namespace Root.Rak.Agents.Visitor
 
         public void ResetReservation()
         {
-            _place.HasReservation = false;
+            if (_place != null)
+            {
+                _place.HasReservation = false;
 
-            _place.Table.ResetVisitor();
+                _place.Table.ResetVisitor();
+
+                _place = null;
+            }
 
             _collider.enabled = false;
         }
