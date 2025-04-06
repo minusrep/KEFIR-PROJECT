@@ -1,4 +1,5 @@
-﻿using Root.Rak.Agents.Enemy;
+﻿using Root.MaximEnvironment;
+using Root.Rak.Agents.Enemy;
 using Root.Rak.Agents.Visitor;
 using Root.Rak.Gameplay.Generators;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace Root.Rak.Tests
 {
     public class TestTargetProvider : MonoBehaviour, ITargetProvider
     {
-        public TestPlayerController Player;
+        public CharacterHealth Player;
 
         public DoorsAdministrator _doorsAdministrator;
 
