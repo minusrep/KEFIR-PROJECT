@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Root.MaximEnvironment;
 using Root.Rak.BT;
 using UnityEditor;
 using UnityEngine;
@@ -250,6 +251,13 @@ namespace Root.Rak.Agents.Visitor
                 return NodeStatus.SUCCESS;
             });
 
+            var upDollars = new ActionNode(() =>
+            {
+                CharacterStats.MoneyAmount += UnityEngine.Random.Range(500, 700);
+
+                return NodeStatus.SUCCESS;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
                 isNotStadding,
@@ -257,6 +265,7 @@ namespace Root.Rak.Agents.Visitor
                 standUpAnim,
                 lockMotion,
                 goHome,
+                upDollars
             });
         }
 
