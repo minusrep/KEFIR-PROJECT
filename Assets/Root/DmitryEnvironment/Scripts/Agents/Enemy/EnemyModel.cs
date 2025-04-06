@@ -5,6 +5,8 @@ namespace Root.Rak.Agents.Enemy
 {
     public class EnemyModel
     {
+        public event Action DeadEvent;
+
         public bool IsLife { get; private set; }
         public bool IsDead { get; private set; }
         public bool HasTarget { get; private set; }
@@ -38,7 +40,7 @@ namespace Root.Rak.Agents.Enemy
         {
             _health -= damage;
 
-            if (_health <= 0)
+            if (_health <= 0 && IsLife)
             {
                 IsLife = false;
 
@@ -49,6 +51,8 @@ namespace Root.Rak.Agents.Enemy
         public void Dead()
         {
             IsDead = true;
+
+            DeadEvent?.Invoke();
         }
 
         public void UpdateTarget()
