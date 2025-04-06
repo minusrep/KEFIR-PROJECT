@@ -1,6 +1,7 @@
 ﻿using Root.Rak.Agents;
 using Root.Rak.Agents.Enemy;
 using System;
+using Root.MaximEnvironment;
 using UnityEngine;
 
 namespace Root.Rak.Tests
@@ -56,6 +57,10 @@ namespace Root.Rak.Tests
 
         public void Build()
         {
+            if (CharacterStats.MoneyAmount < Cost) return;
+            
+            CharacterStats.MoneyAmount -= Cost;
+            
             _isLife = true;
 
             _currentHealth = _health;
@@ -64,5 +69,7 @@ namespace Root.Rak.Tests
 
             //TODO: Animate Building...
         }
+        
+        
     }
 }
