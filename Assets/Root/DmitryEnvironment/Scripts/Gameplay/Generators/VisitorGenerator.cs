@@ -1,5 +1,6 @@
 using Root.Rak.Agents.Visitor;
 using Root.Rak.Tests;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -54,9 +55,7 @@ namespace Root.Rak.Gameplay.Generators
         {
             for (int i = 0; i < _minCount; i++)
             {
-                var visitor = CreateVisitor();
-
-                visitor.Construct(_visitorProvider);
+                ConfiguratgeVisitor(CreateVisitor());
 
                 yield return null;
             }
@@ -67,10 +66,14 @@ namespace Root.Rak.Gameplay.Generators
 
                 if (_count == _maxCount) continue;
 
-                var visitor = CreateVisitor();
-
-                visitor.Construct(_visitorProvider);
+                ConfiguratgeVisitor(CreateVisitor());
             }
+        }
+        private void ConfiguratgeVisitor(VisitorAgent visitor)
+        {
+            visitor.Construct(_visitorProvider);
+
+            visitor.Dead += DescreaseVisitor;
         }
 
         private VisitorAgent CreateVisitor()
@@ -79,6 +82,9 @@ namespace Root.Rak.Gameplay.Generators
 
             return Instantiate(_visitorPrefab);
         }
+
+        private void DescreaseVisitor()
+            => _count--;
 
     }
 }

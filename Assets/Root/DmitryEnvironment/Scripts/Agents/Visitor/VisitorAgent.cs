@@ -1,4 +1,6 @@
+using Root.Rak.Agents.Enemy;
 using Root.Rak.Tests;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,8 +8,13 @@ namespace Root.Rak.Agents.Visitor
 {
 
     [RequireComponent(typeof(NavMeshAgent), typeof(VisitorStomach))]
-    public class VisitorAgent : MonoBehaviour
+    public class VisitorAgent : MonoBehaviour, IEntityAttacked, ITarget
     {
+        public event Action Dead;
+
+        public TeamID ID => _teamID;
+        public Vector3 Position => transform.position;
+
         public VisitorAnimatorHandler AnimHandler;
 
         private VisitorModel _model;
@@ -17,6 +24,8 @@ namespace Root.Rak.Agents.Visitor
         private VisitorMotion _motion;
 
         private VisitorBrain _brain;
+
+        [SerializeField] private TeamID _teamID;
 
         public void Construct(TestVisitorTargetsProvider provider)
         {
@@ -34,6 +43,11 @@ namespace Root.Rak.Agents.Visitor
             _motion.Update();
 
             _brain.Update();
+        }
+
+        public void TakeDamage(IAttack attack)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
