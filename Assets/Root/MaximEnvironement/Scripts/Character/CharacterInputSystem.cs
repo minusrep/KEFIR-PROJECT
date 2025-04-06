@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Root.MaximEnvironement;
+using UnityEngine;
 
 namespace Root.MaximEnvironment
 {
@@ -138,6 +139,12 @@ namespace Root.MaximEnvironment
                             CharacterInventory.RemoveHandsItem();
                         }
                         
+                        break;
+                    
+                    case RepairableDoor repairableDoor:
+
+                        repairableDoor.Interact();
+                                                
                         break;
                 }
             }

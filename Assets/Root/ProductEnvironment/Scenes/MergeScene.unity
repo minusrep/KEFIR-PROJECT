@@ -957,7 +957,10 @@ GameObject:
   - component: {fileID: 363732274}
   - component: {fileID: 363732276}
   - component: {fileID: 363732275}
-  m_Layer: 0
+  - component: {fileID: 363732277}
+  - component: {fileID: 363732278}
+  - component: {fileID: 363732279}
+  m_Layer: 16
   m_Name: BREAKABLE DOORight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1027,6 +1030,60 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &363732277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363732272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24975cf0642476e89882455bb20bd56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 363732278}
+  Elements:
+  - {fileID: 8436044119034424708}
+  - {fileID: 5863084997573126542}
+  - {fileID: 3482498680391998173}
+--- !u!95 &363732278
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363732272}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4eda1de9bf652d743a59216845148a19, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &363732279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363732272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc41d256eded63f46830786f63a0830b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Descirption: "\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C
+    \u0434\u0432\u0435\u0440\u044C ($50)"
+  TestDoor: {fileID: 363732274}
+  DoorAnimator: {fileID: 363732277}
 --- !u!1 &393974156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,6 +2377,7 @@ MonoBehaviour:
   AllTime: 0
   TimeScale: 1
   StartTime: 540
+  EndTime: 1200
 --- !u!1 &820378652
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,7 +3483,8 @@ GameObject:
   - component: {fileID: 1632212112}
   - component: {fileID: 1632212115}
   - component: {fileID: 1632212114}
-  m_Layer: 0
+  - component: {fileID: 1632212116}
+  m_Layer: 16
   m_Name: BREAKABLE DOORLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3474,7 +3533,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632212109}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4eda1de9bf652d743a59216845148a19, type: 2}
   m_CullingMode: 0
@@ -3500,7 +3559,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 1632212112}
-  Elements: []
+  Elements:
+  - {fileID: 4686180639329131655}
+  - {fileID: 5610757262501526599}
+  - {fileID: 3439887741423938013}
 --- !u!65 &1632212114
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3530,6 +3592,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1632212116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632212109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc41d256eded63f46830786f63a0830b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Descirption: 
+  TestDoor: {fileID: 1632212111}
+  DoorAnimator: {fileID: 1632212113}
 --- !u!1 &1674568385
 GameObject:
   m_ObjectHideFlags: 0
@@ -6125,7 +6202,7 @@ GameObject:
   - component: {fileID: 4057575157868537312}
   - component: {fileID: 3439887741423938014}
   - component: {fileID: 3439887741423938015}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: board3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6175,7 +6252,7 @@ GameObject:
   - component: {fileID: 1115514529587165306}
   - component: {fileID: 3482498680391998174}
   - component: {fileID: 3482498680391998175}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: board3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6911,7 +6988,7 @@ GameObject:
   - component: {fileID: 996688649384654962}
   - component: {fileID: 4686180639329131656}
   - component: {fileID: 4686180639329131657}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: board1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7307,7 +7384,7 @@ GameObject:
   - component: {fileID: 5645674754753274694}
   - component: {fileID: 5610757262501526600}
   - component: {fileID: 5610757262501526601}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: board2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7478,7 +7555,7 @@ GameObject:
   - component: {fileID: 3236431120809280236}
   - component: {fileID: 5863084997573126543}
   - component: {fileID: 5863084997573126544}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: board2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9181,7 +9258,7 @@ GameObject:
   - component: {fileID: 902130799358882894}
   - component: {fileID: 8436044119034424709}
   - component: {fileID: 8436044119034424710}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: board1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

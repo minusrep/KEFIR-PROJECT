@@ -7,16 +7,8 @@ namespace Root.Rak.Tests
     {
         public Animator Animator;
 
-        public List<Rigidbody> Elements;
+        public List<GameObject> Elements;
 
-        private void Start()
-        {
-            Elements = new List<Rigidbody>();
-            
-            Elements.AddRange( gameObject.GetComponentsInChildren<Rigidbody>());
-            
-            Elements.ForEach(a => a.isKinematic = true);
-        }
 
         [ContextMenu("Destroy")]
         public void DestroyDoor()
