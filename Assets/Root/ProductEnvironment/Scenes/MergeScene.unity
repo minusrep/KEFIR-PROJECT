@@ -2619,6 +2619,8 @@ GameObject:
   - component: {fileID: 1632212111}
   - component: {fileID: 1632212113}
   - component: {fileID: 1632212112}
+  - component: {fileID: 1632212115}
+  - component: {fileID: 1632212114}
   m_Layer: 0
   m_Name: BREAKABLE DOORLeft
   m_TagString: Untagged
@@ -2695,6 +2697,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 1632212112}
   Elements: []
+--- !u!65 &1632212114
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632212109}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4490075, y: 2.3833036, z: 1.5789138}
+  m_Center: {x: -0.06217265, y: 0.6916518, z: -0.059056103}
+--- !u!54 &1632212115
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632212109}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1725190655
 GameObject:
   m_ObjectHideFlags: 0
