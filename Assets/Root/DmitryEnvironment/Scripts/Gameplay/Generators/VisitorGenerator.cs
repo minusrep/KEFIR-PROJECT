@@ -65,7 +65,7 @@ namespace Root.Rak.Gameplay.Generators
 
             while (_isActive)
             {
-                yield return new WaitForSeconds(Random.Range(60, 75));
+                yield return new WaitForSeconds(Random.Range(30, 50));
 
                 if (_count == _maxCount) continue;
 

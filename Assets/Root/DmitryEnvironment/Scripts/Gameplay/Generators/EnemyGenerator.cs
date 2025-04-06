@@ -66,7 +66,7 @@ namespace Root.Rak.Gameplay.Generators
 
             while (_isActive)
             {
-                yield return new WaitForSeconds(Random.Range(60, 120));
+                yield return new WaitForSeconds(Random.Range(45, 75));
 
                 for (int i = 0; i < Random.Range(2, 5); i++)
                 {
