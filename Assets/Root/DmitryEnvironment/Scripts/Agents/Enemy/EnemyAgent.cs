@@ -35,7 +35,7 @@ namespace Root.Rak.Agents.Enemy
 
             _attacker = new EnemyAttaker(AttackTriggerHandler, ID);
 
-            _motion = new EnemyMotion(GetComponent<NavMeshAgent>(), null);
+            _motion = new EnemyMotion(GetComponent<NavMeshAgent>(), GetComponent<Collider>());
 
             _model = new EnemyModel(provider, _motion, transform);
 
