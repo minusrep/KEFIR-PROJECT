@@ -5,10 +5,13 @@ using UnityEngine;
 
 namespace Root.Rak.Gameplay.Generators
 {
+
     public class VisitorGenerator : MonoBehaviour
     {
         private const int MAX_RATIO = 60;
         private const int MIN_RATIO = 25;
+
+        [SerializeField] private VisitorAdministrator _administrator;
 
         [SerializeField] private PointVisualizer _startPoint;
 
@@ -73,6 +76,8 @@ namespace Root.Rak.Gameplay.Generators
             visitor.Construct(_visitorProvider);
 
             visitor.Dead += DescreaseVisitor;
+
+            _administrator.Register(visitor);
         }
 
         private VisitorAgent CreateVisitor()
@@ -83,7 +88,9 @@ namespace Root.Rak.Gameplay.Generators
         }
 
         private void DescreaseVisitor()
-            => _count--;
+        {
+            _count--;
+        }
 
     }
 }
