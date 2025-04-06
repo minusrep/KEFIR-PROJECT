@@ -22,7 +22,7 @@ namespace Root.MaximEnvironment
 
             _boxCollider = GetComponent<BoxCollider>();
             
-            _rigidbody.isKinematic = true;
+            _rigidbody.isKinematic = false;
         }
         
         public void Take(Transform parent)
