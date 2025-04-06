@@ -1,3 +1,4 @@
+using Root.Rak.Agents.Enemy;
 using Root.Rak.Agents.Visitor;
 using Root.Rak.Tests;
 using System.Collections;
@@ -5,10 +6,13 @@ using UnityEngine;
 
 namespace Root.Rak.Gameplay.Generators
 {
+
     public class VisitorGenerator : MonoBehaviour
     {
         private const int MAX_RATIO = 60;
         private const int MIN_RATIO = 25;
+
+        [SerializeField] private VisitorAdministrator _administrator;
 
         [SerializeField] private PointVisualizer _startPoint;
 
@@ -72,7 +76,9 @@ namespace Root.Rak.Gameplay.Generators
         {
             visitor.Construct(_visitorProvider);
 
-            visitor.Dead += DescreaseVisitor;
+            visitor.DeadForGenerator += DescreaseVisitor;
+
+            _administrator.Register(visitor);
         }
 
         private VisitorAgent CreateVisitor()
@@ -82,8 +88,12 @@ namespace Root.Rak.Gameplay.Generators
             return Instantiate(_visitorPrefab, _startPoint.Position, Quaternion.identity);
         }
 
-        private void DescreaseVisitor()
-            => _count--;
+        private void DescreaseVisitor(ITarget target)
+        {
+            _count--;
+
+            _administrator.Unregister(target);
+        }
 
     }
 }

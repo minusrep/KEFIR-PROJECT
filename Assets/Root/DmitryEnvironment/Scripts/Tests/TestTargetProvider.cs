@@ -1,4 +1,5 @@
-﻿using Root.Rak.Agents.Enemy;
+﻿using Root.MaximEnvironment;
+using Root.Rak.Agents.Enemy;
 using Root.Rak.Agents.Visitor;
 using Root.Rak.Gameplay.Generators;
 using System.Collections.Generic;
@@ -8,9 +9,11 @@ namespace Root.Rak.Tests
 {
     public class TestTargetProvider : MonoBehaviour, ITargetProvider
     {
-        public TestPlayerController Player;
+        public CharacterHealth Player;
 
         public DoorsAdministrator _doorsAdministrator;
+
+        public VisitorAdministrator _visitorsAdministrator;
 
         public List<VisitorAgent> Visitors;
 
@@ -25,7 +28,8 @@ namespace Root.Rak.Tests
             if (CheckDoors(out newTarget, distanceBetweenPlayer, enemy))
                 return newTarget;
 
-            //TODO: Add Check Client Agents
+            if (CheckVisitors(out newTarget, distanceBetweenPlayer, enemy))
+                return newTarget;
 
             return Player;
 
@@ -53,6 +57,27 @@ namespace Root.Rak.Tests
                     return true;
                 }
 
+            }
+
+            return false;
+        }
+
+        private bool CheckVisitors(out ITarget newTarget, float distanceBetweenPlayer, Transform enemy)
+        {
+            newTarget = null;
+
+            var visitors = _visitorsAdministrator.GetVisitors();
+
+            if (visitors.Length == 0) return false;
+
+            foreach (var visitor in visitors)
+            {
+                if (distanceBetweenPlayer > Vector3.Distance(enemy.position, visitor.Position))
+                {
+                    newTarget = visitor;
+
+                    return true;
+                }
             }
 
             return false;
