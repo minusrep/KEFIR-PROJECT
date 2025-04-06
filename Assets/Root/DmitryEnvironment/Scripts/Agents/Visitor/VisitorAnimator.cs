@@ -7,27 +7,36 @@ namespace Root.Rak.Agents.Visitor
     {
         public bool IsSidding { get; private set; } = false;
         public bool IsStanding { get; private set; } = false;
+        public bool IsDeading { get; private set; } = false;
         
         private readonly Animator _stateMachine;
+        private readonly GameObject _me;
 
         private readonly int IsWalkHash = Animator.StringToHash("IsWalk");
         private readonly int IsSidDownHash = Animator.StringToHash("IsSidDown");
         private readonly int IsStandUpHash = Animator.StringToHash("IsStandUp");
         private readonly int IsDeadHash = Animator.StringToHash("IsDead");
 
-        public VisitorAnimator(Animator stateMachine, VisitorAnimatorHandler animHandler)
+        public VisitorAnimator(Animator stateMachine, VisitorAnimatorHandler animHandler, GameObject me)
         {
             _stateMachine = stateMachine;
+            
+            _me = me;
 
             animHandler.EndSidDownEvent += EndSidDownHandler;
             animHandler.EndStandUpEvent += EndStandUpHandler;
+            animHandler.EndDeadEvent += EndDeadHandler;
         }
 
         public void Walk() 
             => _stateMachine.SetBool(IsWalkHash, true);
 
-        public void Dead() 
-            => _stateMachine.SetTrigger(IsDeadHash);
+        public void Dead()
+        {
+            IsDeading = true;
+
+            _stateMachine.SetTrigger(IsDeadHash);
+        }
 
         public void SidDown()
         {
@@ -48,5 +57,8 @@ namespace Root.Rak.Agents.Visitor
 
         public void EndStandUpHandler()
             => IsStanding = false;
+
+        public void EndDeadHandler() 
+            => _me.SetActive(false);
     }
 }

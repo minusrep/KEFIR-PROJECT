@@ -33,7 +33,7 @@ namespace Root.Rak.Agents.Visitor
         {
             _motion = new VisitorMotion(GetComponent<NavMeshAgent>());
 
-            _animator = new VisitorAnimator(GetComponentInChildren<Animator>(), AnimHandler);
+            _animator = new VisitorAnimator(GetComponentInChildren<Animator>(), AnimHandler, gameObject);
 
             _model = new VisitorModel(provider, _motion, GetComponent<VisitorStomach>(), this, GetComponent<Collider>());
 
