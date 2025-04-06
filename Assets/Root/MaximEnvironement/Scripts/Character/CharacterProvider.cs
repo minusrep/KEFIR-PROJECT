@@ -1,3 +1,4 @@
+using InfimaGames.LowPolyShooterPack;
 using UnityEngine;
 
 namespace Root.MaximEnvironment
@@ -8,8 +9,12 @@ namespace Root.MaximEnvironment
     
         public bool Holstered { get; private set; }
         
+        public int CurrentAmmo => _weapon.CurrentAmmo;
+        
         [SerializeField] private Animator _characterAnimator;
 
+        [SerializeField] private Weapon _weapon;
+        
         private void Start() 
             => SetHolstered(false);
 

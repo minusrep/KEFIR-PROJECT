@@ -10,6 +10,8 @@ namespace Root.MaximEnvironment
 
         public CharacterInventory CharacterInventory;
         
+        public CharacterAudioProvider CharacterAudioProvider;
+        
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
@@ -113,7 +115,7 @@ namespace Root.MaximEnvironment
                             if (item == null) break;
                             
                             cookingTable.SetInventoryItem(item);
-                            
+
                             break;
                         }
 
@@ -125,6 +127,9 @@ namespace Root.MaximEnvironment
                         
                         if (readyHands)
                         {
+                        
+
+                            
                             guestTable.SetItem(CharacterInventory.HandsItem);
 
                             CharacterInventory.RemoveHandsItem();

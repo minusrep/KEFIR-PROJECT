@@ -9,6 +9,8 @@ namespace InfimaGames.LowPolyShooterPack
     /// </summary>
     public class Weapon : WeaponBehaviour
     {
+        public int CurrentAmmo => ammunitionCurrent;
+        
         #region FIELDS SERIALIZED
         
         [Title(label: "Settings")]
