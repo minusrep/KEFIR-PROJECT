@@ -16,6 +16,8 @@ namespace Root.Rak.Agents.Visitor
 
         private IVisitorTarget _place;
 
+        private ITableFood _table;
+
         private float _health;
 
         public VisitorModel(TestVisitorTargetsProvider provider, VisitorMotion motion, VisitorStomach stomach, ITarget me)
@@ -62,6 +64,8 @@ namespace Root.Rak.Agents.Visitor
             _place.HasReservation = true;
 
             _place.Table.ArriveFoodEvent += _stomach.Feed;
+
+            _table = _place.Table;
         }
 
         public void GoHome()
@@ -72,6 +76,9 @@ namespace Root.Rak.Agents.Visitor
 
             _motion.SetTarget(place);
         }
+
+        public void NotifyTable()
+            => _table.HasVisitor = true;
 
         public void ResetReservation()
         {

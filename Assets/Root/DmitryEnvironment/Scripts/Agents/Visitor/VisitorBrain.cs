@@ -166,6 +166,8 @@ namespace Root.Rak.Agents.Visitor
             {
                 //TODO: Make Order
 
+                _model.NotifyTable();
+
                 return NodeStatus.SUCCESS;
             });
 
