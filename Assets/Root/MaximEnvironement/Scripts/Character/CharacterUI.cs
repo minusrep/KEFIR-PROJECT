@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Root.MaximEnvironement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,11 +8,16 @@ namespace Root.MaximEnvironment
 {
     public class CharacterUI : MonoBehaviour
     {
+        public GameLoop GameLoop;
+        
         private CharacterInventory _characterInventory;
         
         private CharacterInteraction _characterInteraction;
         
         private CharacterHealth _characterHealth;
+
+        private CharacterProvider _characterProvider;
+        
         
         [SerializeField] private TextMeshProUGUI _interactiveObjectStatus;
 
@@ -21,6 +27,13 @@ namespace Root.MaximEnvironment
 
         [SerializeField] private Sprite _defaultIcon;
         
+        [SerializeField] private TextMeshProUGUI _ammo;
+
+        [SerializeField] private TextMeshProUGUI _moneyAmount;
+
+        [SerializeField] private TextMeshProUGUI _clocks;
+        
+        
         private void Start()
         {
             _characterHealth = GetComponent<CharacterHealth>();
@@ -28,8 +41,10 @@ namespace Root.MaximEnvironment
              _characterInteraction = GetComponent<CharacterInteraction>();
              
              _characterInventory = GetComponent<CharacterInventory>();
+             
+             _characterProvider = GetComponent<CharacterProvider>();
         }
-
+        
         private void Update()
         {
              UpdateInteractiveObjectStatus();
@@ -37,7 +52,30 @@ namespace Root.MaximEnvironment
              UpdateHealthBar();
              
              UpdateInventory();
+
+             UpdateAmmo();
+
+             UpdateMoneyAmount();
+
+             UpdateClocks();
         }
+
+        private void UpdateClocks()
+        {
+            int total = (int) GameLoop.AllTime;
+            
+            int hours =  total / 60;
+            
+            int minutes = total % 60;
+            
+            _clocks.text = $"{hours.ToString("00")}:{minutes.ToString("00")}";
+        }
+
+        private void UpdateMoneyAmount() 
+            => _moneyAmount.text = CharacterStats.MoneyAmount.ToString("$0.00");
+
+        private void UpdateAmmo() 
+            => _ammo.text = _characterProvider.CurrentAmmo.ToString("00");
 
         private void UpdateInventory()
         {
