@@ -256,6 +256,13 @@ namespace Root.Rak.Agents.Visitor
             var hasNotReachedTarget = new ConditionNode(() => !_motion.HasReachedTarget);
             var isNotStadding = new ConditionNode(() => !_animator.IsStanding);
 
+            var resetReservation = new ActionNode(() =>
+            {
+                _model.ResetReservation();
+
+                return NodeStatus.SUCCESS;
+            });
+
             var runAnimActive = new ActionNode(() =>
             {
                 _animator.Walk();
@@ -274,6 +281,7 @@ namespace Root.Rak.Agents.Visitor
             {
                 hasNotReachedTarget,
                 isNotStadding,
+                resetReservation,
                 runAnimActive,
                 motionActivate,
                 DebugNode("MoveToHome")

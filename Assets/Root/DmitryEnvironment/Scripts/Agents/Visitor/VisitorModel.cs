@@ -55,7 +55,7 @@ namespace Root.Rak.Agents.Visitor
             _motion.SetTarget(place);
         }
 
-        private void ResetReservation()
+        public void ResetReservation()
         {
             _place.HasReservation = false;
 
