@@ -1,10 +1,14 @@
-﻿using Root.Rak.Agents;
+﻿using System;
+using Root.Rak.Agents;
+using Root.Rak.Agents.Enemy;
 using UnityEngine;
 
 namespace Root.MaximEnvironment
 {
-    public class CharacterHealth : MonoBehaviour, IEntityAttacked
+    public class CharacterHealth : MonoBehaviour, IEntityAttacked, ITarget
     {
+        public event Action Dead;
+        public Vector3 Position => gameObject.transform.position;
         public TeamID ID => PlayerID;
 
         public TeamID PlayerID;
@@ -15,5 +19,6 @@ namespace Root.MaximEnvironment
 
         public void TakeDamage(IAttack attack) 
             => CurrentHealth -= attack.Damage;
+
     }
 }
