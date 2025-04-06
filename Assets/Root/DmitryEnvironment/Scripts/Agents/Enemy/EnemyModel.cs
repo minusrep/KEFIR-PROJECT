@@ -16,6 +16,8 @@ namespace Root.Rak.Agents.Enemy
         
         private readonly Transform _me;
 
+        private float _health;
+
         public EnemyModel(ITargetProvider targetProvider, EnemyMotion motion, Transform me)
         {
             _targetProvider = targetProvider;
@@ -28,11 +30,20 @@ namespace Root.Rak.Agents.Enemy
             IsDead = false;
 
             HasTarget = false;
+
+            _health = 100;
         }
 
-        public void TakeDamage()
+        public void TakeDamage(float damage)
         {
-            IsLife = false;
+            _health -= damage;
+
+            if (_health <= 0)
+            {
+                IsLife = false;
+
+                _health = 0;
+            }
         }
 
         public void Dead()

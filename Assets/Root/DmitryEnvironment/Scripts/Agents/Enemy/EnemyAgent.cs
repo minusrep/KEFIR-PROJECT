@@ -48,7 +48,7 @@ namespace Root.Rak.Agents.Enemy
         {
             if (!_model.IsLife) return;
 
-            _model.TakeDamage();
+            _model.TakeDamage(attack.Damage);
         }
 
         public void Update()
