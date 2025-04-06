@@ -48,6 +48,12 @@ namespace Root.Rak.Gameplay.Generators
             });
         }
 
+        public TestDoor GetLeftDoor()
+            => _doorLeft;
+
+        public TestDoor GetRightDoor()
+            => _doorRight;
+
         public DoorStatus GetDoorStatus()
             => _status;
     }
