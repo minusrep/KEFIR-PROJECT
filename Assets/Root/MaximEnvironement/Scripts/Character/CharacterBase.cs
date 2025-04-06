@@ -7,8 +7,9 @@ namespace Root.MaximEnvironment
     [RequireComponent(typeof(CharacterInputSystem))]
     [RequireComponent(typeof(CharacterHealth))]
     [RequireComponent(typeof(CharacterProvider))]
+    [RequireComponent(typeof(CharacterUI))]
     public class CharacterBase : MonoBehaviour
     {
-        
+
     }
 }

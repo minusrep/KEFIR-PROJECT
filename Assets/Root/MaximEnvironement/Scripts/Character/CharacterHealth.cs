@@ -13,9 +13,7 @@ namespace Root.MaximEnvironment
         
         public float MaxHealth = 100f;
 
-        public void TakeDamage(IAttack attack)
-        {
-            
-        }
+        public void TakeDamage(IAttack attack) 
+            => CurrentHealth -= attack.Damage;
     }
 }

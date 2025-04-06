@@ -10,6 +10,8 @@ namespace Root.MaximEnvironment
         
         public ItemType ItemType;
 
+        public Sprite ItemIcon;
+        
         private Rigidbody _rigidbody;
 
         private BoxCollider _boxCollider;
@@ -25,11 +27,18 @@ namespace Root.MaximEnvironment
         
         public void Take(Transform parent)
         {
-            _rigidbody.isKinematic = parent == null;
+            _rigidbody.isKinematic = parent != null;
             
             transform.parent = parent;
             
             transform.localPosition = Vector3.zero;
+        }
+
+        public void Drop()
+        {
+            _rigidbody.isKinematic = false;
+            
+            transform.parent = null;
         }
     }
 }

@@ -18,12 +18,19 @@ namespace Root.MaximEnvironment
         }
 
         private void Start() 
-            => CharacterProvider.SetHolstered(false);
+            => CharacterProvider.SetHolstered(true);
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.G))
+            CharacterProvider.SetHolstered(CharacterInventory.HandsItem != null);
+            
+            if (Input.GetKeyDown(KeyCode.G))
+            {
                 CharacterProvider.SwitchHolstered();
+
+                if (CharacterInventory.HandsItem != null) 
+                    CharacterInventory.DropHandsItem();
+            }
 
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -31,11 +38,7 @@ namespace Root.MaximEnvironment
                 {
                     case Item item:
                         
-                        Debug.Log("Interaction!");
-                        
                         if (!item.Active) break;
-                        
-                        Debug.Log("Item not active");
                         
                         if (CharacterInventory.IsFull) break;
                         
