@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Root.Rak.Agents;
 using Root.Rak.Tests;
 using UnityEngine;
-using Random = System.Random;
 
 namespace Root.MaximEnvironment
 {
