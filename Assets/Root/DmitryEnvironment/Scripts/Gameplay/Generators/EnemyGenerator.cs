@@ -58,6 +58,8 @@ namespace Root.Rak.Gameplay.Generators
 
         private IEnumerator Generating()
         {
+            yield return new WaitForSeconds(_timeBetweenSpawn);
+
             ConfiguratgeVisitor(CreateEnemy(_leftSpawnPoint.Position));
 
             ConfiguratgeVisitor(CreateEnemy(_rightSpawnPoint.Position));
@@ -66,16 +68,19 @@ namespace Root.Rak.Gameplay.Generators
             {
                 yield return new WaitForSeconds(_timeBetweenSpawn);
 
-                if (_count == _maxCount) continue;
+                for (int i = 0; i < 3; i++)
+                {
+                    if (_count == _maxCount) continue;
 
-                var startPosition = _leftSpawnPoint.Position;
+                    var startPosition = _leftSpawnPoint.Position;
 
-                if (_doorsAdministrator.GetDoorStatus() == DoorStatus.RIGHT)
-                    startPosition = _rightSpawnPoint.Position;
-                else if (_doorsAdministrator.GetDoorStatus() == DoorStatus.FULL)
-                    startPosition = Random.Range(0, 100) >= 50 ? _rightSpawnPoint.Position : _leftSpawnPoint.Position;
+                    if (_doorsAdministrator.GetDoorStatus() == DoorStatus.RIGHT)
+                        startPosition = _rightSpawnPoint.Position;
+                    else if (_doorsAdministrator.GetDoorStatus() == DoorStatus.FULL)
+                        startPosition = Random.Range(0, 100) >= 50 ? _rightSpawnPoint.Position : _leftSpawnPoint.Position;
 
-                ConfiguratgeVisitor(CreateEnemy(startPosition));
+                    ConfiguratgeVisitor(CreateEnemy(startPosition));
+                }
             }
         }
         private void ConfiguratgeVisitor(EnemyAgent enemy)
