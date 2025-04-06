@@ -10,35 +10,26 @@ namespace Root.Rak.Agents.Enemy
 
         public bool IsFreeze
         {
-            get => _controller.isStopped;
+            get => !_controller.enabled || _controller.isStopped;
 
             set => _controller.isStopped = value;
         }
 
         private readonly NavMeshAgent _controller;
 
-        private readonly IEnemyMotionConfig _config;
+        private readonly Collider _collider;
 
         private ITarget _target;
 
-        public EnemyMotion(NavMeshAgent controller, IEnemyMotionConfig config)
+        public EnemyMotion(NavMeshAgent controller, Collider collider)
         {
             _controller = controller;
 
-            _config = config;
-
-
             IsFreeze = false;
 
-            //InitConfig();
+            _collider = collider;
         }
 
-        private void InitConfig()
-        {
-            _controller.speed = _config.SpeedMotion;
-
-            _controller.stoppingDistance = 2.0f;
-        }
 
         public void Update()
         {
@@ -68,6 +59,8 @@ namespace Root.Rak.Agents.Enemy
         public void LockNavMesh()
         {
             _controller.enabled = false;
+
+            _collider.enabled = false;
         }
     }
 }
