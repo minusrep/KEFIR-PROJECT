@@ -28,7 +28,8 @@ namespace Root.Rak.Tests
         
         [SerializeField] private float _cost;
 
-        private float _currentHealth;
+        [Header("Визуализация")]
+        [SerializeField] private float _currentHealth;
 
         private void Start()
         {
@@ -45,7 +46,7 @@ namespace Root.Rak.Tests
 
             _currentHealth -= attack.Damage;
 
-            if (_health <= 0)
+            if (_currentHealth <= 0)
             {
                 _currentHealth = 0;
 
