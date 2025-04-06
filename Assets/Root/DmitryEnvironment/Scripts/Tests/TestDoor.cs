@@ -17,16 +17,23 @@ namespace Root.Rak.Tests
         public Vector3 Position => transform.position;
         public bool IsLife => _isLife;
 
+        public float Cost => _cost;
 
         [SerializeField] private bool _isLife;
 
         [SerializeField] private float _health;
 
         [SerializeField] private TeamID _id;
+        
+        [SerializeField] private float _cost;
+
+        private float _currentHealth;
 
         private void Start()
         {
             _isLife = true;
+
+            _currentHealth = _health;
 
             Dead += () => DestroyEvent?.Invoke();
         }
@@ -35,16 +42,27 @@ namespace Root.Rak.Tests
         {
             Debug.Log("Damage DOOR");
 
-            _health -= attack.Damage;
+            _currentHealth -= attack.Damage;
 
             if (_health <= 0)
             {
-                _health = 0;
+                _currentHealth = 0;
 
                 _isLife = false;
 
                 Dead?.Invoke();
             }
+        }
+
+        public void Build()
+        {
+            _isLife = true;
+
+            _currentHealth = _health;
+
+            BuildedEvent?.Invoke();
+
+            //TODO: Animate Building...
         }
     }
 }
