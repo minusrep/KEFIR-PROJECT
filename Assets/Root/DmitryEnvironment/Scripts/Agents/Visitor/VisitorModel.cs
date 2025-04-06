@@ -17,6 +17,8 @@ namespace Root.Rak.Agents.Visitor
 
         private IVisitorTarget _place;
 
+        private float _health;
+
         public VisitorModel(TestVisitorTargetsProvider provider, VisitorMotion motion, VisitorStomach stomach, ITarget me)
         {
             _provider = provider;
@@ -32,6 +34,18 @@ namespace Root.Rak.Agents.Visitor
             _place = null;
 
             me.Dead += ResetReservation;
+
+            _health = 100;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            _health -= damage;
+
+            if (_health < 0 && IsLife)
+            {
+                IsLife = false;
+            }
         }
 
         public void SelectTarget()

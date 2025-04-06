@@ -47,7 +47,7 @@ namespace Root.Rak.Agents.Visitor
 
         public void TakeDamage(IAttack attack)
         {
-            throw new System.NotImplementedException();
+            _model.TakeDamage(attack.Damage);
         }
     }
 }
