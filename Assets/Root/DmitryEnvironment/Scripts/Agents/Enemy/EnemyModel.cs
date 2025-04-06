@@ -73,7 +73,7 @@ namespace Root.Rak.Agents.Enemy
 
         }
 
-        private void ClearTarget()
+        public void ClearTarget()
         {
             HasTarget = false;
 

@@ -58,5 +58,10 @@ namespace Root.Rak.Agents.Enemy
 
         public void AddListenerDead(Action callback)
             => _model.DeadEvent += callback;
+
+        public void ClearTarget()
+        {
+            _model.ClearTarget();
+        }
     }
 }
