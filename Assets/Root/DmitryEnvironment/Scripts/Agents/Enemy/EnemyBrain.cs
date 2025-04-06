@@ -170,11 +170,20 @@ namespace Root.Rak.Agents.Enemy
                 return NodeStatus.SUCCESS;
             });
 
+            var blockNavMesh = new ActionNode(() =>
+            {
+                _motion.LockNavMesh();
+
+                return NodeStatus.SUCCESS;
+            });
+
             return new SequenceNode(new List<ABTNode>
             {
                 isNotDead,
                 deadAnimActive, 
                 deadAction,
+                clearTarget,
+                blockNavMesh,
                 DebugNode("Dead =(")
             });
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Root.Rak.Agents.Enemy
@@ -63,5 +64,10 @@ namespace Root.Rak.Agents.Enemy
 
         private void CheckReachedDestination()
             => HasReachedTarget = !_controller.pathPending && _controller.remainingDistance <= _controller.stoppingDistance;
+
+        public void LockNavMesh()
+        {
+            _controller.enabled = false;
+        }
     }
 }
