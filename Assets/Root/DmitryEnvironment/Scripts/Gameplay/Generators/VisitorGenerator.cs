@@ -1,3 +1,4 @@
+using Root.Rak.Agents.Enemy;
 using Root.Rak.Agents.Visitor;
 using Root.Rak.Tests;
 using System.Collections;
@@ -75,7 +76,7 @@ namespace Root.Rak.Gameplay.Generators
         {
             visitor.Construct(_visitorProvider);
 
-            visitor.Dead += DescreaseVisitor;
+            visitor.DeadForGenerator += DescreaseVisitor;
 
             _administrator.Register(visitor);
         }
@@ -87,9 +88,11 @@ namespace Root.Rak.Gameplay.Generators
             return Instantiate(_visitorPrefab, _startPoint.Position, Quaternion.identity);
         }
 
-        private void DescreaseVisitor()
+        private void DescreaseVisitor(ITarget target)
         {
             _count--;
+
+            _administrator.Unregister(target);
         }
 
     }

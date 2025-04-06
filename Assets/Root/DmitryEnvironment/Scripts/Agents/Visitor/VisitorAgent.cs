@@ -12,6 +12,8 @@ namespace Root.Rak.Agents.Visitor
     {
         public event Action Dead;
 
+        public event Action<ITarget> DeadForGenerator;
+
         public TeamID ID => _teamID;
         public Vector3 Position => transform.position;
 
@@ -36,7 +38,12 @@ namespace Root.Rak.Agents.Visitor
             _model = new VisitorModel(provider, _motion, GetComponent<VisitorStomach>(), this);
 
             _brain = new VisitorBrain(_animator, _model, _motion, GetComponent<VisitorStomach>());
+
+            Dead += DeadForVisitorHandler;
         }
+
+        private void DeadForVisitorHandler() 
+            => DeadForGenerator?.Invoke(this);
 
         private void Update()
         {
