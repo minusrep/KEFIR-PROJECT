@@ -1,4 +1,5 @@
 using Root.Rak.Tests;
+using System;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,7 +11,7 @@ namespace Root.Rak.Agents.Enemy
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyAgent : MonoBehaviour, IEntityAttacked
     {
-        public TestTargetProvider TargetProvider;
+        public event Action DeadEvent;
 
         public Animator Anim;
 
@@ -26,12 +27,11 @@ namespace Root.Rak.Agents.Enemy
 
         private EnemyModel _model;
 
-
         private EnemyBrain _brain;
 
         public TeamID ID { get; private set; } = TeamID.AGENT;
 
-        public void Start()
+        public void Construct(TestTargetProvider provider)
         {
             _animator = new EnemyAnimator(Anim, AnimHandler);
 
@@ -39,7 +39,7 @@ namespace Root.Rak.Agents.Enemy
 
             _motion = new EnemyMotion(GetComponent<NavMeshAgent>(), null);
 
-            _model = new EnemyModel(TargetProvider, _motion, transform);
+            _model = new EnemyModel(provider, _motion, transform);
 
             _brain = new EnemyBrain(_model, _animator, _motion, _attacker);
         }

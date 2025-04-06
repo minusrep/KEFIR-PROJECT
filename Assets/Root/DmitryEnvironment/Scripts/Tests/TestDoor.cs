@@ -5,9 +5,13 @@ using UnityEngine;
 
 namespace Root.Rak.Tests
 {
-    public class TestDoor : MonoBehaviour, ITarget, IEntityAttacked
+
+    public class TestDoor : MonoBehaviour, ITarget, IEntityAttacked, IDoor
     {
         public event Action Dead;
+
+        public event Action BuildedEvent;
+        public event Action DestroyEvent;
 
         public TeamID ID => _id;
         public Vector3 Position => transform.position;
@@ -23,6 +27,8 @@ namespace Root.Rak.Tests
         private void Start()
         {
             _isLife = true;
+
+            Dead += () => DestroyEvent?.Invoke();
         }
 
         public void TakeDamage(IAttack attack)
