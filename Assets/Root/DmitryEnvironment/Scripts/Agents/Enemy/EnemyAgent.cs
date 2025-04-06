@@ -11,8 +11,6 @@ namespace Root.Rak.Agents.Enemy
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyAgent : MonoBehaviour, IEntityAttacked
     {
-        public event Action DeadEvent;
-
         public Animator Anim;
 
         public ChildrenAnimatorHandler AnimHandler;
@@ -57,5 +55,8 @@ namespace Root.Rak.Agents.Enemy
 
             _brain.Update();
         }
+
+        public void AddListenerDead(Action callback)
+            => _model.DeadEvent += callback;
     }
 }

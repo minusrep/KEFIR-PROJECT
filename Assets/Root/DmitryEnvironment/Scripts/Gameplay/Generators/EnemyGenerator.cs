@@ -82,7 +82,7 @@ namespace Root.Rak.Gameplay.Generators
         {
             enemy.Construct(_targetProvider);
 
-            enemy.DeadEvent += DescreaseEnemy;
+            enemy.AddListenerDead(DescreaseEnemy);
         }
 
         private EnemyAgent CreateEnemy(Vector3 startPosition)
