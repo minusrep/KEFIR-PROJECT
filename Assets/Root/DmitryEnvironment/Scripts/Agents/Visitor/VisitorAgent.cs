@@ -12,6 +12,8 @@ namespace Root.Rak.Agents.Visitor
     {
         public event Action Dead;
 
+        public event Action OutEvent;
+
         public event Action<ITarget> DeadForGenerator;
 
         public TeamID ID => _teamID;
@@ -37,7 +39,7 @@ namespace Root.Rak.Agents.Visitor
 
             _model = new VisitorModel(provider, _motion, GetComponent<VisitorStomach>(), this, GetComponent<Collider>());
 
-            _brain = new VisitorBrain(_animator, _model, _motion, GetComponent<VisitorStomach>());
+            _brain = new VisitorBrain(_animator, _model, _motion, GetComponent<VisitorStomach>(), this);
 
             Dead += DeadForVisitorHandler;
         }
@@ -59,5 +61,8 @@ namespace Root.Rak.Agents.Visitor
             if (!_model.TakeDamage(attack.Damage))
                 Dead?.Invoke();
         }
+
+        public void OnOut()
+            => OutEvent?.Invoke();
     }
 }
