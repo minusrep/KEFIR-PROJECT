@@ -68,7 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c849e3dab3c5b64dbc201700a495c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetProvider: {fileID: 0}
   Anim: {fileID: 3214429932714967923}
   AnimHandler: {fileID: 9075148350929207009}
   AttackTriggerHandler: {fileID: 9075148351453997541}
@@ -97,6 +96,7 @@ GameObject:
   - component: {fileID: 9075148351453997543}
   - component: {fileID: 9075148351453997540}
   - component: {fileID: 9075148351453997541}
+  - component: {fileID: 6471336369151538564}
   m_Layer: 0
   m_Name: Attacker
   m_TagString: Untagged
@@ -143,6 +143,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f5c5965dd19674181bb63c9be91be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &6471336369151538564
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075148351453997542}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &9075148350929207010
 PrefabInstance:
   m_ObjectHideFlags: 0

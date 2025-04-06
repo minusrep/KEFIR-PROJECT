@@ -410,7 +410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &174040018
 Transform:
   m_ObjectHideFlags: 0
@@ -437,8 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf7335fe784a934ea247f9868056b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _doorRight: {fileID: 0}
-  _doorLeft: {fileID: 0}
+  _doorRight: {fileID: 363732274}
+  _doorLeft: {fileID: 1632212111}
 --- !u!114 &174040020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,8 +451,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 623158914b55cf74bbcfe81d4459df1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  _doorsAdministrator: {fileID: 0}
+  Player: {fileID: 1896389817}
+  _doorsAdministrator: {fileID: 174040019}
+  _visitorsAdministrator: {fileID: 2012409794}
   Visitors: []
 --- !u!114 &174040021
 MonoBehaviour:
@@ -779,7 +780,7 @@ GameObject:
   - component: {fileID: 363732273}
   - component: {fileID: 363732274}
   m_Layer: 0
-  m_Name: BREAKABLE DOOR
+  m_Name: BREAKABLE DOORight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2559,6 +2560,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_LPSP_FP_CH
       objectReference: {fileID: 0}
+    - target: {fileID: 2751027687307977091, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
 --- !u!1 &1632212109
@@ -2574,7 +2580,7 @@ GameObject:
   - component: {fileID: 1632212113}
   - component: {fileID: 1632212112}
   m_Layer: 0
-  m_Name: BREAKABLE DOOR
+  m_Name: BREAKABLE DOORLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2621,7 +2627,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632212109}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4eda1de9bf652d743a59216845148a19, type: 2}
   m_CullingMode: 0
@@ -2641,12 +2647,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632212109}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24975cf0642476e89882455bb20bd56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 1632212112}
+  Elements: []
 --- !u!1 &1725190655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,6 +2975,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1896389817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1484487210, guid: 19eadcf8fbed56b4da77ca94c1b4145f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610503716}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c855e07bc94a48a8c22f753cba95c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2012409790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2979,13 +2998,14 @@ GameObject:
   - component: {fileID: 2012409792}
   - component: {fileID: 2012409791}
   - component: {fileID: 2012409793}
+  - component: {fileID: 2012409794}
   m_Layer: 0
   m_Name: VisitorGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2012409791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2998,6 +3018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968a0ddb83f0f9148a97b134aaa8c982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _administrator: {fileID: 2012409794}
   _startPoint: {fileID: 291043129}
   _visitorPrefab: {fileID: 494317438865579843, guid: 2866a776587fcda40a1e7b1e58c1cf58,
     type: 3}
@@ -3034,14 +3055,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targets:
   - {fileID: 1395791625}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   Home: {fileID: 0}
+--- !u!114 &2012409794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012409790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cec5233ba3351d4d904df596f8b39db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &2053647468
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5061,7 +5087,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4252958049393290608, guid: 40d2835ed56d280468e09d71b366eb62, type: 3}
 --- !u!54 &3482498680391998175
@@ -6350,7 +6376,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4636190031305778663, guid: 40d2835ed56d280468e09d71b366eb62, type: 3}
 --- !u!54 &5863084997573126544
@@ -7951,7 +7977,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5356186636178142005, guid: 40d2835ed56d280468e09d71b366eb62, type: 3}
 --- !u!54 &8436044119034424710

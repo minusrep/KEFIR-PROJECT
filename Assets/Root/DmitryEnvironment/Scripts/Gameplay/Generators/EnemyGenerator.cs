@@ -35,7 +35,7 @@ namespace Root.Rak.Gameplay.Generators
         private int _count;
         private bool _isActive;
 
-        public void Awake()
+        public void Start()
         {
             _maxCount = (_maxAllCount * MAX_RATIO) / 100;
 
