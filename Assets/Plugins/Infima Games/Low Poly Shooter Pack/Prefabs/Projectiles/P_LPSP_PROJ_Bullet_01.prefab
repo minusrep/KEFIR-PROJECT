@@ -186,6 +186,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 65871565580582628}
+  Prefabs:
+  - {fileID: 3127521075069008155, guid: 02cccf75d28027b4382cef576c5031cc, type: 3}
+  - {fileID: 2524839047206144823, guid: f9cb3fb702196c64aab192cc93920911, type: 3}
+  - {fileID: 8534798308532101043, guid: b1883d107f1fa884c9d661d4272900b5, type: 3}
 --- !u!1 &1231345400216816
 GameObject:
   m_ObjectHideFlags: 0
