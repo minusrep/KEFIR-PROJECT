@@ -61,6 +61,9 @@ namespace Root.Rak.Agents.Visitor
             HasTarget = true;
         }
 
+        public void Rotate()
+            => _controller.gameObject.transform.rotation = _target.Rotation;
+
         private void Move()
             => _controller.SetDestination(_target.Position);
 
