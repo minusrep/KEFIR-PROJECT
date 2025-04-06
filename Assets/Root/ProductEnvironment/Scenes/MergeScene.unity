@@ -4529,11 +4529,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1484487210, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
       propertyPath: MaxHealth
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1484487210, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
       propertyPath: CurrentHealth
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1484487213, guid: 19eadcf8fbed56b4da77ca94c1b4145f, type: 3}
       propertyPath: GameLoop

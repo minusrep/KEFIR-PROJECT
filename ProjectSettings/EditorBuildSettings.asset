@@ -5,18 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Root/MaximEnvironement/Scenes/MenuScene.unity
+    guid: b4138e20e11769e43ad68aa4d9b0b374
+  - enabled: 1
+    path: Assets/Root/ProductEnvironment/Scenes/MergeScene.unity
+    guid: ad4ffb563061e6a4089b3e970f69b2e4
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9eb07e2d669e9c94e9d7d3c782a916f7,
       type: 2}
