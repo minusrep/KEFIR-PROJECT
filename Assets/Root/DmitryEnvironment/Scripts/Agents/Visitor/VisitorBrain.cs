@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Root.Rak.BT;
 using UnityEditor;
 using UnityEngine;
@@ -150,6 +151,13 @@ namespace Root.Rak.Agents.Visitor
             var clearTarget = new ActionNode(() =>
             {
                 _motion.ClearTarget();
+
+                return NodeStatus.SUCCESS;
+            });
+
+            var rotate = new ActionNode(() =>
+            {
+                _motion.Rotate();
 
                 return NodeStatus.SUCCESS;
             });

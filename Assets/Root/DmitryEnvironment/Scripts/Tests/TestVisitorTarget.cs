@@ -13,6 +13,8 @@ namespace Root.Rak.Tests
 
         public ITableFood Table => _tableFood;
 
+        public Quaternion Rotation => transform.rotation;
+
         [SerializeField] private GuestTable _tableFood;
 
     }

@@ -8,6 +8,8 @@ namespace Root.Rak.Agents.Visitor
 
         public Vector3 Position { get; }
 
+        public Quaternion Rotation { get; }
+
         public ITableFood Table {  get; }
     }
 }
