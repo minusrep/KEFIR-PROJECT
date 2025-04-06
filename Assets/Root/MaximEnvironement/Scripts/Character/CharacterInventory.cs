@@ -55,6 +55,15 @@ namespace Root.MaximEnvironment
             }            
         }
 
+        public void DropHandsItem()
+        {
+            var item = HandsItem;
+            
+            item.Drop();
+
+            RemoveHandsItem();
+        }
+
         public Item RemoveInventoryItem()
         {
             var item = InventoryItems.LastOrDefault();

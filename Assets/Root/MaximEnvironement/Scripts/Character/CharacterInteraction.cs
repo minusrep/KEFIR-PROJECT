@@ -17,7 +17,7 @@ namespace Root.MaximEnvironment
 
             var results = new RaycastHit[1];
             
-            var foundedCount = Physics.RaycastNonAlloc(ray, results, InteractionDistance);
+            var foundedCount = Physics.RaycastNonAlloc(ray, results, InteractionDistance, LayerMask.GetMask("Interactable"));
 
             if (foundedCount == 0) return null;
             
