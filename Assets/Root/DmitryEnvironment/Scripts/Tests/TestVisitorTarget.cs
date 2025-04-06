@@ -1,3 +1,4 @@
+using Root.MaximEnvironment;
 using Root.Rak.Agents;
 using Root.Rak.Agents.Visitor;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Root.Rak.Tests
 
         public ITableFood Table => _tableFood;
 
-        [SerializeField] private ITableFood _tableFood;
+        [SerializeField] private GuestTable _tableFood;
 
     }
 }

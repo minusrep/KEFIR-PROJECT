@@ -123,13 +123,12 @@ namespace Root.MaximEnvironment
                     
                     case GuestTable guestTable:
 
-                        var readyHands = CharacterInventory.HandsItem != null;
+                        var readyHands = CharacterInventory.HandsItem != null && guestTable.HasVisitor; 
+
+                        Debug.Log($"Guest Table: {readyHands}");
                         
                         if (readyHands)
                         {
-                        
-
-                            
                             guestTable.SetItem(CharacterInventory.HandsItem);
 
                             CharacterInventory.RemoveHandsItem();
