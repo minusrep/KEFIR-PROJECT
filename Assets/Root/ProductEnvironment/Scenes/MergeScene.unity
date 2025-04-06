@@ -469,7 +469,7 @@ PrefabInstance:
     - target: {fileID: 315854175669790267, guid: 5133bd1b8955e3242bac12084e6243a9,
         type: 3}
       propertyPath: m_Name
-      value: VisitorPlace_1
+      value: VisitorPlace_3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5133bd1b8955e3242bac12084e6243a9, type: 3}
@@ -994,7 +994,7 @@ PrefabInstance:
     - target: {fileID: 315854175669790267, guid: 5133bd1b8955e3242bac12084e6243a9,
         type: 3}
       propertyPath: m_Name
-      value: VisitorPlace_1
+      value: VisitorPlace_5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5133bd1b8955e3242bac12084e6243a9, type: 3}
@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 496760442}
   - component: {fileID: 496760441}
   m_Layer: 16
-  m_Name: Guest Table
+  m_Name: Guest Table_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1690,7 +1690,7 @@ GameObject:
   - component: {fileID: 594145073}
   - component: {fileID: 594145072}
   m_Layer: 16
-  m_Name: Guest Table
+  m_Name: Guest Table_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2075,6 +2075,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &720369035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 315854175669790266, guid: 5133bd1b8955e3242bac12084e6243a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 323423789}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5006fc2e868592e4c922a2f48406e03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &721468447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,7 +2101,7 @@ GameObject:
   - component: {fileID: 721468450}
   - component: {fileID: 721468449}
   m_Layer: 16
-  m_Name: Guest Table
+  m_Name: Guest Table_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2457,7 +2469,7 @@ PrefabInstance:
     - target: {fileID: 315854175669790267, guid: 5133bd1b8955e3242bac12084e6243a9,
         type: 3}
       propertyPath: m_Name
-      value: VisitorPlace_1
+      value: VisitorPlace_4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5133bd1b8955e3242bac12084e6243a9, type: 3}
@@ -2565,6 +2577,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 786934367}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &792534840 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 315854175669790266, guid: 5133bd1b8955e3242bac12084e6243a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1419895438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5006fc2e868592e4c922a2f48406e03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &794448816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8138287121384943888, guid: a2910f6185179964aa55855b7a16920d,
@@ -3546,6 +3570,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2910f6185179964aa55855b7a16920d, type: 3}
+--- !u!114 &1304396140 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 315854175669790266, guid: 5133bd1b8955e3242bac12084e6243a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 75434484}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5006fc2e868592e4c922a2f48406e03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1328835000 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 315854175669790266, guid: 5133bd1b8955e3242bac12084e6243a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 762563339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5006fc2e868592e4c922a2f48406e03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1383837133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,7 +3608,7 @@ GameObject:
   - component: {fileID: 1383837136}
   - component: {fileID: 1383837135}
   m_Layer: 16
-  m_Name: Guest Table
+  m_Name: Guest Table_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3658,6 +3706,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383837133}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1387165846 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 315854175669790266, guid: 5133bd1b8955e3242bac12084e6243a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 116779110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5006fc2e868592e4c922a2f48406e03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1395791625 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 315854175669790266, guid: 5133bd1b8955e3242bac12084e6243a9,
@@ -3740,7 +3800,7 @@ PrefabInstance:
     - target: {fileID: 315854175669790267, guid: 5133bd1b8955e3242bac12084e6243a9,
         type: 3}
       propertyPath: m_Name
-      value: VisitorPlace_1
+      value: VisitorPlace_0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5133bd1b8955e3242bac12084e6243a9, type: 3}
@@ -3820,7 +3880,7 @@ PrefabInstance:
     - target: {fileID: 315854175669790267, guid: 5133bd1b8955e3242bac12084e6243a9,
         type: 3}
       propertyPath: m_Name
-      value: VisitorPlace_1
+      value: VisitorPlace_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5133bd1b8955e3242bac12084e6243a9, type: 3}
@@ -4490,7 +4550,7 @@ GameObject:
   - component: {fileID: 1750605697}
   - component: {fileID: 1750605696}
   m_Layer: 16
-  m_Name: Guest Table
+  m_Name: Guest Table_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4733,7 +4793,7 @@ GameObject:
   - component: {fileID: 1891854698}
   - component: {fileID: 1891854697}
   m_Layer: 16
-  m_Name: Guest Table
+  m_Name: Guest Table_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4923,6 +4983,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targets:
   - {fileID: 1395791625}
+  - {fileID: 1304396140}
+  - {fileID: 792534840}
+  - {fileID: 1387165846}
+  - {fileID: 1328835000}
+  - {fileID: 720369035}
   Home: {fileID: 1961591861}
 --- !u!114 &2012409794
 MonoBehaviour:
