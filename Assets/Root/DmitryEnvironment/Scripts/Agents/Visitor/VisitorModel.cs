@@ -34,7 +34,7 @@ namespace Root.Rak.Agents.Visitor
 
             me.Dead += ResetReservation;
 
-            _health = 100;
+            _health = 10;
         }
 
         public void TakeDamage(float damage)

@@ -3,6 +3,7 @@ using Root.Rak.Agents.Enemy;
 using Root.Rak.Agents.Visitor;
 using Root.Rak.Gameplay.Generators;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 namespace Root.Rak.Tests
@@ -41,22 +42,50 @@ namespace Root.Rak.Tests
 
             if (_doorsAdministrator.GetDoorStatus() == DoorStatus.EMPTY) return false;
 
-            TestDoor door = _doorsAdministrator.GetRightDoor();
-
-            if (_doorsAdministrator.GetDoorStatus() == DoorStatus.LEFT)
+            else if (_doorsAdministrator.GetDoorStatus() == DoorStatus.FULL)
             {
-                door = _doorsAdministrator.GetLeftDoor();
-            }
+                TestDoor doorRight = _doorsAdministrator.GetRightDoor();
+                TestDoor doorLeft = _doorsAdministrator.GetLeftDoor();
 
-            if (door.IsLife)
-            {
-                if (distanceBetweenPlayer > Vector3.Distance(enemy.position, door.Position))
+                var rightDoorToEnemy = Vector3.Distance(enemy.position, doorRight.Position);
+                var leftDoorToEnemy = Vector3.Distance(enemy.position, doorLeft.Position);
+
+                float door = rightDoorToEnemy;
+                TestDoor current = doorRight;
+
+                if (leftDoorToEnemy < rightDoorToEnemy)
                 {
-                    newTarget = door;
+                    door = leftDoorToEnemy;
 
-                    return true;
+                    current = doorLeft;
                 }
 
+                if (distanceBetweenPlayer > door)
+                {
+                    newTarget = current;
+                    return true;
+                }
+            }
+            else 
+            {
+
+                TestDoor door = _doorsAdministrator.GetRightDoor();
+
+                if (_doorsAdministrator.GetDoorStatus() == DoorStatus.LEFT)
+                {
+                    door = _doorsAdministrator.GetLeftDoor();
+                }
+
+                if (door.IsLife)
+                {
+                    if (distanceBetweenPlayer > Vector3.Distance(enemy.position, door.Position))
+                    {
+                        newTarget = door;
+
+                        return true;
+                    }
+
+                }
             }
 
             return false;
