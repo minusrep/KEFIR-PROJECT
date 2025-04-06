@@ -17,7 +17,7 @@ namespace Root.Rak.Agents.Visitor
 
         private IVisitorTarget _place;
 
-        private ITableFood _table;
+        public ITableFood Table;
 
         private float _health;
 
@@ -41,6 +41,8 @@ namespace Root.Rak.Agents.Visitor
             me.Dead += ResetReservation;
 
             _health = 10;
+
+            motion.SetModel(this);
         }
 
         public bool TakeDamage(float damage)
@@ -70,7 +72,7 @@ namespace Root.Rak.Agents.Visitor
 
             _place.Table.ArriveFoodEvent += _stomach.Feed;
 
-            _table = _place.Table;
+            Table = _place.Table;
         }
 
         public void GoHome()
@@ -83,7 +85,7 @@ namespace Root.Rak.Agents.Visitor
         }
 
         public void NotifyTable()
-            => _table.HasVisitor = true;
+            => Table.HasVisitor = true;
 
         public void ResetReservation()
         {

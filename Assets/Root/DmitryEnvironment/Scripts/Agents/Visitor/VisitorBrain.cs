@@ -159,13 +159,6 @@ namespace Root.Rak.Agents.Visitor
                 return NodeStatus.SUCCESS;
             });
 
-            var rotate = new ActionNode(() =>
-            {
-                _motion.Rotate();
-
-                return NodeStatus.SUCCESS;
-            });
-
             var makeOrder = new ActionNode(() =>
             {
                 //TODO: Make Order

@@ -1,4 +1,6 @@
 using System;
+using System.Security.Claims;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Root.Rak.Agents.Visitor
@@ -16,6 +18,7 @@ namespace Root.Rak.Agents.Visitor
             set => _controller.isStopped = value;
         }
 
+        private VisitorModel _model;
         private readonly NavMeshAgent _controller;
 
         private IVisitorTarget _target;
@@ -25,13 +28,11 @@ namespace Root.Rak.Agents.Visitor
             _controller = controller;
 
             IsFreeze = false;
-
-            //InitConfig();
         }
 
-        private void InitConfig()
+        public void SetModel(VisitorModel model)
         {
-            _controller.stoppingDistance = 2.0f;
+            _model = model;
         }
 
         public void Update()
@@ -43,6 +44,9 @@ namespace Root.Rak.Agents.Visitor
             if (_target == null) return;
 
             Move();
+
+            if (_model.Status != VisitorStatus.OUT)
+                Rotate();
 
             CheckReachedDestination();
         }
@@ -61,11 +65,18 @@ namespace Root.Rak.Agents.Visitor
             HasTarget = true;
         }
 
-        public void Rotate()
-            => _controller.gameObject.transform.rotation = _target.Rotation;
-
         private void Move()
             => _controller.SetDestination(_target.Position);
+
+        private void Rotate()
+        {
+            Vector3 directionToChair = _model.Table.Position - _controller.transform.position;
+            directionToChair.y = 0;  // Игнорируем изменение по оси Y
+
+            Quaternion rotation = Quaternion.LookRotation(directionToChair);
+            _controller.transform.rotation = rotation;
+
+        }
 
         private void CheckReachedDestination()
             => HasReachedTarget = !_controller.pathPending && _controller.remainingDistance <= _controller.stoppingDistance;
