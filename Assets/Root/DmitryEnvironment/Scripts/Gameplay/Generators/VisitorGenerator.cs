@@ -79,7 +79,7 @@ namespace Root.Rak.Gameplay.Generators
         {
             _count++;
 
-            return Instantiate(_visitorPrefab);
+            return Instantiate(_visitorPrefab, _startPoint.Position, Quaternion.identity);
         }
 
         private void DescreaseVisitor()
